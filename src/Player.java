@@ -41,7 +41,7 @@ public class Player extends Carakter {
         world.addObject(visualizer,0, world.getHeight()-1);
     }
 
-    
+
     private void performMovement() {
         if (Greenfoot.isKeyDown("W")) {
             turn(Direction.NORTH);
