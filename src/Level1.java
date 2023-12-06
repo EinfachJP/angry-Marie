@@ -12,7 +12,7 @@ public class Level1 extends World
      */
     public Level1()
     {
-        super(10, 10, 55);
+        super(10, 10, 60);
         GreenfootImage image=new GreenfootImage("cell.jpg");
         image.scale(30,30);
         setBackground(image);
