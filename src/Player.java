@@ -41,7 +41,7 @@ public class Player extends Carakter {
         world.addObject(visualizer,0, world.getHeight()-1);
     }
 
-    
+
     private void performMovement() {
         if (Greenfoot.isKeyDown("W")) {
             turn(Direction.NORTH);
@@ -200,7 +200,7 @@ public class Player extends Carakter {
             }
         }
         if (myWorld == level2) {
-            if (x < 9 && y == 7) {
+            if (x < 9 && y == 6) {
                 level2.removeObject(this);
                 level1.addObject(this, 3, 4);
                 Greenfoot.setWorld(level1);
