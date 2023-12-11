@@ -14,7 +14,7 @@ public class Unicorn extends Carakter {
     //Konstruktoren
 
 
-    //Methoden
+    //Methoden1
 
     /**
      * Wird einmal pro Zeiteinheit aufgerufen
