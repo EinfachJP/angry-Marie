@@ -1,4 +1,5 @@
 import greenfoot.Actor;
+import greenfoot.GreenfootImage;
 
 public class Rock extends BlockingObjekt {
 
@@ -9,6 +10,11 @@ public class Rock extends BlockingObjekt {
 	public void hit() {
 		getWorld().addObject(new Star(), getX(), getY()); //Bei einem Treffer wird kurz ein Stern eingeblendet
 
+	}
+	public Rock(){
+		GreenfootImage rock = new GreenfootImage("rock.gif");
+		rock.scale(20,20);
+		setImage(rock);
 	}
 
 
