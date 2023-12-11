@@ -45,19 +45,39 @@ public class Player extends Carakter {
     private void performMovement() {
         if (Greenfoot.isKeyDown("W")) {
             turn(Direction.NORTH);
-            move();
+            if(getX()>0) {
+                move();
+            }
+            else {
+                getToNewWorld(0);
+            }
         }
         if (Greenfoot.isKeyDown("D")) {
             turn(Direction.EAST);
-            move();
+            if(getX()>0) {
+                move();
+            }
+            else {
+                getToNewWorld(1);
+            }
         }
         if (Greenfoot.isKeyDown("S")) {
             turn(Direction.SOUTH);
-            move();
+            if(getX()>0) {
+                move();
+            }
+            else {
+                getToNewWorld(2);
+            }
         }
         if (Greenfoot.isKeyDown("A")) {
             turn(Direction.WEST);
-            move();
+            if(getX()>0) {
+                move();
+            }
+            else {
+                getToNewWorld(3);
+            }
         }
         if (Greenfoot.isKeyDown("Q")) {
             eatCarrotonyou();
@@ -68,9 +88,6 @@ public class Player extends Carakter {
         if (Greenfoot.isKeyDown("N")) {
             placeCarrotonyou();
         }
-        if (Greenfoot.isKeyDown("T")) {
-            moveLevel();
-        }
         if (Greenfoot.isKeyDown("F")) {
             hitMonster();
         }
@@ -78,6 +95,7 @@ public class Player extends Carakter {
             takeCarrotonyou();
         }
     }
+
 
 
 
@@ -178,34 +196,23 @@ public class Player extends Carakter {
                 move(1);
                 consumStamina();
             }
-        } else {
-            setLife(getLife() - 10);
         }
-
     }
 
-    public void moveLevel() {
+    public void moveWorld(World newWorld) {
 
         int x = getX();
         int y = getY();
         World myWorld = getWorld();
-        if (myWorld== level1) {
 
-            if (x < 9 && y == 0) {
-                level1.removeObject(this);
-                level2.addObject(this, 3, 4);
-
-                Greenfoot.setWorld(level2);
-
-            }
+        if (x < 9 && y == 0) {
+            myWorld.removeObject(this);
+            newWorld.addObject(this, x, y);
+            Greenfoot.setWorld(newWorld);
         }
-        if (myWorld == level2) {
-            if (x < 9 && y == 6) {
-                level2.removeObject(this);
-                level1.addObject(this, 3, 4);
-                Greenfoot.setWorld(level1);
-
-            }
+    }
+    public void getToNewWorld(int direction){
+        if(direction==0){
         }
     }
 
