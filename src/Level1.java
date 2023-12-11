@@ -12,9 +12,9 @@ public class Level1 extends World
      */
     public Level1()
     {
-        super(15, 15, 60);
+        super(30, 30, 30);
         GreenfootImage cell2=new GreenfootImage("cell.jpg");
-        cell2.scale(10,10);
+        cell2.scale(20,20);
         setBackground(cell2);
         setPaintOrder(Star.class, Player.class, Carrot.class, Rock.class);
 

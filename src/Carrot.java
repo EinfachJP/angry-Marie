@@ -8,6 +8,9 @@ public class Carrot extends Actor
 
     public Carrot(){
         setWeight(5);
+        GreenfootImage carrot = new GreenfootImage("karotte.png");
+        carrot.scale(20,20);
+        setImage(carrot);
     }
 
     public Carrot(int weight){
