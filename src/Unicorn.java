@@ -14,6 +14,15 @@ public class Unicorn extends Carakter {
     //Konstruktoren
 
 
+    public Unicorn() {
+        setLife(100);
+        setStamina(20);
+    }
+
+
+
+
+
     //Methoden1
 
     /**
@@ -39,6 +48,7 @@ public class Unicorn extends Carakter {
         }
         visualizer = new InventoryVisualizer(inventory);
         world.addObject(visualizer,0, world.getHeight()-1);
+        setImageSice(30);
     }
 
 
@@ -46,18 +56,23 @@ public class Unicorn extends Carakter {
         if (Greenfoot.isKeyDown("W")) {
             turn(Direction.NORTH);
             move();
+            setImage();
+
         }
         if (Greenfoot.isKeyDown("D")) {
             turn(Direction.EAST);
             move();
+            setImage();
         }
         if (Greenfoot.isKeyDown("S")) {
             turn(Direction.SOUTH);
             move();
+            setImage();
         }
         if (Greenfoot.isKeyDown("A")) {
             turn(Direction.WEST);
             move();
+            setImage();
         }
         if (Greenfoot.isKeyDown("Q")) {
             eatCarrotonyou();
@@ -78,7 +93,11 @@ public class Unicorn extends Carakter {
             takeCarrotonyou();
         }
     }
-
+public void setImage(){
+    GreenfootImage unicorn = new GreenfootImage("Unicorn.png");
+    unicorn.scale(20,20);
+    setImage(unicorn);
+}
 
 
     public void destroyRock() {
@@ -143,10 +162,7 @@ public class Unicorn extends Carakter {
     }
 
 
-    public Unicorn() {
-        setLife(100);
-        setStamina(20);
-    }
+
 
     public Unicorn(int life) {
         setLife(life);

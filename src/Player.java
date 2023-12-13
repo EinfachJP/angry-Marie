@@ -36,6 +36,7 @@ public class Player extends Carakter {
         super.addedToWorld(world);
         if (level1 == null) {
             level1 = getWorld();
+
         }
         visualizer = new InventoryVisualizer(inventory);
         world.addObject(visualizer,0, world.getHeight()-1);
@@ -75,9 +76,12 @@ public class Player extends Carakter {
             if(getX()>0) {
                 move();
             }
+
             else {
                 getToNewWorld(3);
             }
+
+
         }
         if (Greenfoot.isKeyDown("Q")) {
             eatCarrotonyou();
@@ -94,7 +98,11 @@ public class Player extends Carakter {
         if (Greenfoot.isKeyDown("M")) {
             takeCarrotonyou();
         }
+
+
     }
+
+
 
 
 

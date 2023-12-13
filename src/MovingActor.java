@@ -12,6 +12,18 @@ import java.util.List;
 public class MovingActor extends ImprovedActor {
     private final GreenfootImage[][] movingActorImages = new ImprovedGreenfootImage[4][4];
     private int animationStep = 0;
+    public int imageSice=0;
+
+
+
+    public int getImageSice() {
+        return imageSice;
+    }
+
+    public void setImageSice(int imageSice) {
+        this.imageSice = imageSice;
+    }
+
 
     /**
      * Creates a MovingActor
@@ -31,7 +43,10 @@ public class MovingActor extends ImprovedActor {
                         movingActorImages[i][j].rotate(rotationAmount*90);//0 degrees => right
                     }else{
                         if(j==0) { //wenn kein Bild vorhanden ist => Standard nehmen
-                            movingActorImages[i][j] = new ImprovedGreenfootImage(getImage());
+                            GreenfootImage image = new ImprovedGreenfootImage(getImage());
+                            image.scale(20,20);
+                            movingActorImages[i][j] = image;
+
                         }else{
                             movingActorImages[i][j] = new ImprovedGreenfootImage(movingActorImages[i][j - 1]);
                         }
