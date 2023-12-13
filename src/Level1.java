@@ -31,6 +31,11 @@ public class Level1 extends World
         Monster monster =  new Monster(50,2);
         addObject(monster, 0, 0);
 
+        Unicorn unicorn = new Unicorn();
+        addObject(unicorn, 5, 5);
+
+
+
         for(int i = getHeight()-2; i>=0 ;i--){
             Rock rockRow = new Rock();
             addObject(rockRow, 7, i);
