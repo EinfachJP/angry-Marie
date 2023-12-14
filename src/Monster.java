@@ -3,7 +3,7 @@ import greenfoot.World;
 
 import java.util.List;
 
-public class Monster extends Carakter {
+public class Monster extends Charakter {
     //Attribute
 
 
@@ -12,6 +12,7 @@ public class Monster extends Carakter {
 
 
     public Monster(int life, int monsterDamage) {
+        super(30,30);
         setLife(life);
         setDamage(monsterDamage);
     }

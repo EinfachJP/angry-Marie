@@ -1,6 +1,6 @@
 import greenfoot.*;
 import java.util.List;
-public class Player extends Carakter {
+public class Player extends Charakter {
     //Attribute
     private Carrot[] inventory =  new Carrot[8];
     private float stamina = 20;
@@ -16,17 +16,20 @@ public class Player extends Carakter {
     private int yWorld = 9;
     //Konstruktoren
     public Player() {
+        super(30,30);
         setLife(100);
         setStamina(20);
     }
 
     public Player(int life) {
+        super(30,30);
         setLife(life);
     }
 
 
 
     public Player(int life, float stamina) {
+        super(30,30);
         setLife(life);
         setStamina(stamina);
     }

@@ -1,6 +1,6 @@
 import greenfoot.*;
 import java.util.List;
-public class Unicorn extends Carakter {
+public class Unicorn extends Charakter {
     //Attribute
     private Carrot[] inventory =  new Carrot[8];
     private float stamina = 20;
@@ -15,6 +15,7 @@ public class Unicorn extends Carakter {
 
 
     public Unicorn() {
+        super(30,30);
         setLife(100);
         setStamina(20);
     }
@@ -48,7 +49,7 @@ public class Unicorn extends Carakter {
         }
         visualizer = new InventoryVisualizer(inventory);
         world.addObject(visualizer,0, world.getHeight()-1);
-        setImageSice(30);
+
     }
 
 
@@ -165,12 +166,14 @@ public void setImage(){
 
 
     public Unicorn(int life) {
+        super(30,30);
         setLife(life);
     }
 
 
 
     public Unicorn(int life, float stamina) {
+        super(30,30);
         setLife(life);
         setStamina(stamina);
     }

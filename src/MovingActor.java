@@ -12,23 +12,16 @@ import java.util.List;
 public class MovingActor extends ImprovedActor {
     private final GreenfootImage[][] movingActorImages = new ImprovedGreenfootImage[4][4];
     private int animationStep = 0;
-    public int imageSice=0;
 
 
-
-    public int getImageSice() {
-        return imageSice;
-    }
-
-    public void setImageSice(int imageSice) {
-        this.imageSice = imageSice;
-    }
 
 
     /**
      * Creates a MovingActor
      */
-    public MovingActor() {
+    public MovingActor(int sizeX, int sizeY) {
+
+
         String imgFolder = "." + File.separator + "images" + File.separator + this.getClass().getSimpleName() + File.separator;
         //File folder = new File(imgFolder);
         for(int i = 0; i < Direction.values().length; i++){
@@ -41,14 +34,15 @@ public class MovingActor extends ImprovedActor {
                         movingActorImages[i][j] = new ImprovedGreenfootImage(img.getCanonicalPath());
                         int rotationAmount  = i % 2 == 1? -i : i;
                         movingActorImages[i][j].rotate(rotationAmount*90);//0 degrees => right
+                        movingActorImages[i][j].scale(sizeX,sizeY);
                     }else{
                         if(j==0) { //wenn kein Bild vorhanden ist => Standard nehmen
                             GreenfootImage image = new ImprovedGreenfootImage(getImage());
-                            image.scale(20,20);
                             movingActorImages[i][j] = image;
-
+                            movingActorImages[i][j].scale(sizeX,sizeY);
                         }else{
                             movingActorImages[i][j] = new ImprovedGreenfootImage(movingActorImages[i][j - 1]);
+                            movingActorImages[i][j].scale(sizeX,sizeY);
                         }
                     }
                 }

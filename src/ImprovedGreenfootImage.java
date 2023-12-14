@@ -6,9 +6,11 @@ public class
 ImprovedGreenfootImage extends GreenfootImage {
     private int rotation = 0;
 
+
     public ImprovedGreenfootImage(String filename) throws IllegalArgumentException {
         super(filename);
     }
+
 
     public ImprovedGreenfootImage(int width, int height) {
         super(width, height);
