@@ -16,6 +16,7 @@ public class MovingActor extends ImprovedActor {
 
 
 
+
     /**
      * Creates a MovingActor
      */

@@ -17,7 +17,7 @@ public class Player extends Charakter {
 
     //Konstruktoren
     public Player(int life, int stamina) {
-        super(30, 30);
+        super(50, 50);
         setLife(life);
         setStamina(stamina);
     }
@@ -83,7 +83,7 @@ public class Player extends Charakter {
         }
         if (Greenfoot.isKeyDown("S")) {
             turn(Direction.SOUTH);
-            if (getY() > 19) {
+            if (getY() < 19) {
                 move();
             } else {
                 getToNewWorld(2);

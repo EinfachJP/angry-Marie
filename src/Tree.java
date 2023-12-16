@@ -4,7 +4,7 @@ import greenfoot.GreenfootImage;
 public class Tree extends BlockingObjekt {
     public Tree(){
         GreenfootImage tree = new GreenfootImage("Tree.png");
-        tree.scale(50,70);
+        tree.scale(40,60);
         setImage(tree);
     }
 }

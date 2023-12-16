@@ -15,10 +15,11 @@ public class Unicorn extends Charakter {
 
 
     public Unicorn() {
-        super(30,30);
+        super(45,45);
         setLife(100);
         setStamina(20);
     }
+
 
 
     //Methoden1
@@ -152,18 +153,7 @@ public class Unicorn extends Charakter {
 
 
 
-    public Unicorn(int life) {
-        super(30,30);
-        setLife(life);
-    }
 
-
-
-    public Unicorn(int life, float stamina) {
-        super(30,30);
-        setLife(life);
-        setStamina(stamina);
-    }
 
 
     public float getStamina() {

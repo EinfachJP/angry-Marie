@@ -21,9 +21,9 @@ public class Level1 extends World
         Player player =  new Player(100,50);
         addObject(player, 3, 3);
 
-        Carrot carrot = new Carrot();
+        Carrot carrot = new Carrot(5, 20, 20);
         addObject(carrot, 1, 5);
-        Carrot ligthcarrot = new Carrot(3);
+        Carrot ligthcarrot = new Carrot(3, 20, 20);
         addObject(ligthcarrot, 1, 6);
 
         Rock rock = new Rock();
@@ -31,7 +31,7 @@ public class Level1 extends World
         Monster monster =  new Monster(50,2);
         addObject(monster, 0, 0);
 
-        Unicorn unicorn = new Unicorn(100,20);
+        Unicorn unicorn = new Unicorn();
         addObject(unicorn, 5, 5);
 
 

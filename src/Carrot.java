@@ -6,16 +6,13 @@ public class Carrot extends Actor
     private int weight = 5;
 
 
-    public Carrot(){
-        setWeight(5);
+    public Carrot(int weight, int width, int height){
+        setWeight(weight);
         GreenfootImage carrot = new GreenfootImage("karotte.png");
-        carrot.scale(20,20);
+        carrot.scale(width,height);
         setImage(carrot);
     }
 
-    public Carrot(int weight){
-        setWeight(weight);
-    }
 
     public int getWeight() {
         return weight;

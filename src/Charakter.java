@@ -9,8 +9,8 @@ public class Charakter extends MovingActor {
     /**
      * Creates a MovingActor
      *
-     * @param sizeX
-     * @param sizeY
+     * sizeX
+     * sizeY
      */
     public Charakter(int sizeX, int sizeY) {
         super(sizeX, sizeY);
@@ -48,12 +48,6 @@ public class Charakter extends MovingActor {
             int life = getLife();
         }
     }
-
-
-
-
-
-
 
 
 }
