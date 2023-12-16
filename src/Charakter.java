@@ -16,11 +16,9 @@ public class Charakter extends MovingActor {
         super(sizeX, sizeY);
     }
 
-
-    public void act() {
-        draw(life);
-    }
-
+    /**
+     * getter, setter
+     */
 
     public int getDamage() {
         return damage;
@@ -36,6 +34,12 @@ public class Charakter extends MovingActor {
 
     public void setLife(int life) {
         this.life = life;
+    }
+
+
+
+    public void act() {
+        draw(life);
     }
 
     public void hit(int damage) {

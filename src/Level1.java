@@ -31,7 +31,7 @@ public class Level1 extends World
         Monster monster =  new Monster(50,2);
         addObject(monster, 0, 0);
 
-        Unicorn unicorn = new Unicorn();
+        Unicorn unicorn = new Unicorn(100,20);
         addObject(unicorn, 5, 5);
 
 

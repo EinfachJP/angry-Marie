@@ -21,9 +21,6 @@ public class Unicorn extends Charakter {
     }
 
 
-
-
-
     //Methoden1
 
     /**
@@ -57,23 +54,18 @@ public class Unicorn extends Charakter {
         if (Greenfoot.isKeyDown("W")) {
             turn(Direction.NORTH);
             move();
-            setImage();
-
         }
         if (Greenfoot.isKeyDown("D")) {
             turn(Direction.EAST);
             move();
-            setImage();
         }
         if (Greenfoot.isKeyDown("S")) {
             turn(Direction.SOUTH);
             move();
-            setImage();
         }
         if (Greenfoot.isKeyDown("A")) {
             turn(Direction.WEST);
             move();
-            setImage();
         }
         if (Greenfoot.isKeyDown("Q")) {
             eatCarrotonyou();
@@ -94,11 +86,6 @@ public class Unicorn extends Charakter {
             takeCarrotonyou();
         }
     }
-public void setImage(){
-    GreenfootImage unicorn = new GreenfootImage("Unicorn.png");
-    unicorn.scale(20,20);
-    setImage(unicorn);
-}
 
 
     public void destroyRock() {

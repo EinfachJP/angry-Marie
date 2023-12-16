@@ -2,7 +2,7 @@ import greenfoot.*;
 import java.util.List;
 public class Player extends Charakter {
     //Attribute
-    private Carrot[] inventory =  new Carrot[8];
+    private Carrot[] inventory = new Carrot[8];
     private float stamina = 20;
     private int damageP = 5;
     private int oldY = 0;
@@ -14,24 +14,25 @@ public class Player extends Charakter {
     private World[][] worlds = new World[10][10];
     private int xWorld = 0;
     private int yWorld = 9;
+
     //Konstruktoren
-    public Player() {
-        super(30,30);
-        setLife(100);
-        setStamina(20);
-    }
-
-    public Player(int life) {
-        super(30,30);
-        setLife(life);
-    }
-
-
-
-    public Player(int life, float stamina) {
-        super(30,30);
+    public Player(int life, int stamina) {
+        super(30, 30);
         setLife(life);
         setStamina(stamina);
+    }
+
+
+    /**
+     * fetter, setter
+     */
+    public float getStamina() {
+        return stamina;
+    }
+
+    public void setStamina(float newStamina) {
+        stamina = newStamina;
+        getImage().drawString(String.valueOf(stamina), 0, 20);
     }
 
     //Methoden
@@ -47,7 +48,7 @@ public class Player extends Charakter {
             //draw((int) stamina);
             regenStamina();
 
-        } 
+        }
     }
 
 
@@ -59,45 +60,40 @@ public class Player extends Charakter {
 
         }
         visualizer = new InventoryVisualizer(inventory);
-        world.addObject(visualizer,0, world.getHeight()-1);
+        world.addObject(visualizer, 0, world.getHeight() - 1);
     }
 
 
     private void performMovement() {
         if (Greenfoot.isKeyDown("W")) {
             turn(Direction.NORTH);
-            if(getY()>0) {
+            if (getY() > 0) {
                 move();
-            }
-            else {
+            } else {
                 getToNewWorld(0);
             }
         }
         if (Greenfoot.isKeyDown("D")) {
             turn(Direction.EAST);
-            if(getX()<19) {
+            if (getX() < 19) {
                 move();
-            }
-            else {
+            } else {
                 getToNewWorld(1);
             }
         }
         if (Greenfoot.isKeyDown("S")) {
             turn(Direction.SOUTH);
-            if(getY()>19) {
+            if (getY() > 19) {
                 move();
-            }
-            else {
+            } else {
                 getToNewWorld(2);
             }
         }
         if (Greenfoot.isKeyDown("A")) {
             turn(Direction.WEST);
-            if(getX()>0) {
+            if (getX() > 0) {
                 move();
-            }
-
-            else {
+            } else {
                 getToNewWorld(3);
             }
 
@@ -121,10 +117,6 @@ public class Player extends Charakter {
 
 
     }
-
-
-
-
 
 
     public void destroyRock() {
@@ -189,18 +181,6 @@ public class Player extends Charakter {
     }
 
 
-
-
-
-    public float getStamina() {
-        return stamina;
-    }
-
-    public void setStamina(float newStamina) {
-        stamina = newStamina;
-        getImage().drawString(String.valueOf(stamina), 0, 20);
-    }
-
     /**
      * moves one step forwardA
      */
@@ -213,7 +193,7 @@ public class Player extends Charakter {
         }
     }
 
-    public void moveWorld(World newWorld,int myNewX,int myNewY) {
+    public void moveWorld(World newWorld, int myNewX, int myNewY) {
 
 
         World myWorld = getWorld();
@@ -222,28 +202,29 @@ public class Player extends Charakter {
         newWorld.addObject(this, myNewX, myNewY);
         Greenfoot.setWorld(newWorld);
     }
-    public void getToNewWorld(int direction){
+
+    public void getToNewWorld(int direction) {
         int myNewX = getX();
         int myNewY = getY();
 
-        if((direction==0)&(yWorld!=0)){
-            yWorld = yWorld-1;
+        if ((direction == 0) & (yWorld != 0)) {
+            yWorld = yWorld - 1;
             myNewY = 9;
         }
-        if((direction==1)&(xWorld!=9)){
-            xWorld = xWorld+1;
+        if ((direction == 1) & (xWorld != 9)) {
+            xWorld = xWorld + 1;
             myNewX = 0;
         }
-        if((direction==2)&(yWorld!=9)){
-            yWorld = yWorld-1;
+        if ((direction == 2) & (yWorld != 9)) {
+            yWorld = yWorld - 1;
             myNewY = 0;
         }
-        if((direction==3)&(xWorld!=0)){
-            xWorld = xWorld+1;
+        if ((direction == 3) & (xWorld != 0)) {
+            xWorld = xWorld + 1;
             myNewY = 9;
         }
         World newWorld = worlds[xWorld][yWorld];
-        moveWorld(newWorld,myNewX,myNewY);
+        moveWorld(newWorld, myNewX, myNewY);
     }
 
     public void regenStamina() {
@@ -254,20 +235,19 @@ public class Player extends Charakter {
                 stamina = stamina + srgT;
                 srgT = srgT + 0.05f;
             }
-        }else{
+        } else {
             srgT = 0.1f;
         }
-        oldX=x;
-        oldY=y;
+        oldX = x;
+        oldY = y;
     }
+
     public void hitMonster() {
         World myWorld = getWorld();
-        List<Monster> monsters = getNeighbours(1,true,Monster.class);
+        List<Monster> monsters = getNeighbours(1, true, Monster.class);
         monsters.addAll(getIntersectingObjects(Monster.class));
         if (monsters.size() > 0) {
             monsters.get(0).hit(damageP);
         }
     }
-
-
 }
