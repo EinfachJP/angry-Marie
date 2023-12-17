@@ -1,4 +1,5 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import greenfoot.GreenfootImage;
 
 /**
  * @author SAE
@@ -10,8 +11,11 @@ public class InventorySlot extends BlockingObjekt
     
     private static final GreenfootImage EMPTY_SLOT_IMG = new GreenfootImage(".\\images\\EmptySlot.png");
 
+
     public InventorySlot(){
-        setImage(new GreenfootImage(InventorySlot.EMPTY_SLOT_IMG));
+        GreenfootImage inventory = new GreenfootImage(".\\images\\EmptySlot.png");
+        inventory.scale(40, 40);
+        setImage(inventory);
     }
 
     public InventorySlot(Actor item){
