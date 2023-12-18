@@ -9,3 +9,4 @@ project.charset=windows-1252
 simulation.speed=30
 world.lastInstantiated=Level1
 class.Unicorn.image=images/Unicorn/WEST.png
+class.Crystal.image=Kristall.png
