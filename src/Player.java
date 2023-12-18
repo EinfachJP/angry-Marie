@@ -11,7 +11,7 @@ public class Player extends Charakter {
     private World level2 = new Level2();
     private World level1 = null;
     private InventoryVisualizer visualizer;
-    private World[][] worlds = new World[10][10];
+    private World[][] worlds = new World[20][20];
     private int xWorld = 0;
     private int yWorld = 9;
 
@@ -20,11 +20,12 @@ public class Player extends Charakter {
         super(50, 50);
         setLife(life);
         setStamina(stamina);
+        generateWorlds();
     }
 
 
     /**
-     * fetter, setter
+     * getter, setter
      */
     public float getStamina() {
         return stamina;
@@ -211,11 +212,11 @@ public class Player extends Charakter {
             yWorld = yWorld - 1;
             myNewY = 9;
         }
-        if ((direction == 1) & (xWorld != 9)) {
+        if ((direction == 1) & (xWorld != 19)) {
             xWorld = xWorld + 1;
             myNewX = 0;
         }
-        if ((direction == 2) & (yWorld != 9)) {
+        if ((direction == 2) & (yWorld != 19)) {
             yWorld = yWorld - 1;
             myNewY = 0;
         }
@@ -248,6 +249,13 @@ public class Player extends Charakter {
         monsters.addAll(getIntersectingObjects(Monster.class));
         if (monsters.size() > 0) {
             monsters.get(0).hit(damageP);
+        }
+    }
+    public void generateWorlds(){
+        for(int i=19;i>=0;i--){
+            for(int j=0;j<20;j++){
+                worlds[i][j] = new Level2();
+            }
         }
     }
 }

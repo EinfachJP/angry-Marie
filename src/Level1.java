@@ -7,6 +7,7 @@ import greenfoot.*;
  */
 public class Level1 extends World
 {
+    private static World[][] worlds = new World[20][20];
     /**
      * Erzeuge eine Welt.
      */
@@ -20,6 +21,10 @@ public class Level1 extends World
 
         Player player =  new Player(100,50);
         addObject(player, 3, 3);
+
+        if(worlds!=null){
+            generateWorlds();
+        }
 
         Carrot carrot = new Carrot(5, 20, 20);
         addObject(carrot, 1, 5);
@@ -49,7 +54,11 @@ public class Level1 extends World
         Tree tree = new Tree();
         addObject(tree,3,1);
     }
-
-
-
+    public void generateWorlds(){
+        for(int i=19;i>=0;i--){
+            for(int j=0;j<20;j++){
+                worlds[i][j] = new Level2();
+            }
+        }
+    }
 }
