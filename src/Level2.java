@@ -13,15 +13,11 @@ public class Level2 extends World
      */
     public Level2()
     {
-        super(8, 8, 60);
-        setBackground("cell.jpg");
+        super(20, 20, 40);
+        GreenfootImage cell2=new GreenfootImage("cell.jpg");
+        cell2.scale(20,20);
+        setBackground(cell2);
         setPaintOrder(Star.class, Player.class, Carrot.class, Rock.class);
-
-        Monster monster =  new Monster(50,2);
-        addObject(monster, 0, 0);
-
-
-
     }
 
 }
