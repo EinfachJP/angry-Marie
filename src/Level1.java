@@ -24,6 +24,7 @@ public class Level1 extends World
 
 
 
+
         Carrot carrot = new Carrot(5, 20, 20);
         addObject(carrot, 1, 5);
         Carrot ligthcarrot = new Carrot(3, 20, 20);
