@@ -142,6 +142,7 @@ public class Player extends Charakter {
         }
     }
 
+
     public void eatCarrotonyou() {
         World myWorld = getWorld();
         List<Carrot> carrots = myWorld.getObjectsAt(getX(), getY(), Carrot.class);
