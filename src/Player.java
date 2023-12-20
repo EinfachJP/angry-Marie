@@ -23,6 +23,13 @@ public class Player extends Charakter {
         generateWorlds();
     }
 
+    public Player() {
+        super();
+    }
+
+
+
+
 
     /**
      * getter, setter
@@ -114,6 +121,9 @@ public class Player extends Charakter {
         }
         if (Greenfoot.isKeyDown("M")) {
             takeCarrotonyou();
+        }
+        if (Greenfoot.isKeyDown("V")) {
+            transform();
         }
 
 
@@ -229,18 +239,20 @@ public class Player extends Charakter {
     }
 
     public void regenStamina() {
-        int x = getX();
-        int y = getY();
-        if (oldX == x && oldY == y) {
-            if (stamina < 50) {
-                stamina = stamina + srgT;
-                srgT = srgT + 0.05f;
+        if (getWorld() != null) {
+            int x = getX();
+            int y = getY();
+            if (oldX == x && oldY == y) {
+                if (stamina < 50) {
+                    stamina = stamina + srgT;
+                    srgT = srgT + 0.05f;
+                }
+            } else {
+                srgT = 0.1f;
             }
-        } else {
-            srgT = 0.1f;
+            oldX = x;
+            oldY = y;
         }
-        oldX = x;
-        oldY = y;
     }
 
     public void hitMonster() {
@@ -257,5 +269,12 @@ public class Player extends Charakter {
                 worlds[i][j] = new Level2();
             }
         }
+    }
+    public void transform() {
+        int x = getX();
+        int y = getY();
+        Unicorn unicorn = new Unicorn();
+        getWorld().addObject(unicorn, x, y);
+        getWorld().removeObject(this);
     }
 }

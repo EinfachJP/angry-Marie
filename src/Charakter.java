@@ -16,6 +16,10 @@ public class Charakter extends MovingActor {
         super(sizeX, sizeY);
     }
 
+    public Charakter() {
+        super();
+    }
+
     /**
      * getter, setter
      */

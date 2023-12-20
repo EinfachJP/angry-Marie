@@ -33,3 +33,4 @@ public class ImprovedActor extends Actor {
         draw(String.valueOf(value));
     }
 }
+

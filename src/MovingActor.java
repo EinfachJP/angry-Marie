@@ -57,6 +57,10 @@ public class MovingActor extends ImprovedActor {
         setImageRotation(Direction.SOUTH);
     }
 
+    public MovingActor() {
+
+    }
+
 
     /**
      * Determines if the MovingActor can move one steps without hitting any obstacles (i.e. Rocks).
