@@ -58,7 +58,7 @@ public class MovingActor extends ImprovedActor {
     }
 
     public MovingActor() {
-
+        this(50,50);
     }
 
 
@@ -142,6 +142,7 @@ public class MovingActor extends ImprovedActor {
      */
     public void setImageRotation(Direction direction) {
         super.setRotation(direction.getRotation());
+        animationStep = Math.min(animationStep, movingActorImages[Direction.getDirectionByRotation(getRotation()).getValue()].length);
         setImage(movingActorImages[direction.getValue()][animationStep]);
     }
 
@@ -198,7 +199,8 @@ public class MovingActor extends ImprovedActor {
      * @param steps to move
      */
     public void move(int steps){
-        animationStep = (animationStep+1) % 4;
+        //System.out.println(animationStep);
+        animationStep = (animationStep+1) % (movingActorImages[Direction.getDirectionByRotation(getRotation()).getValue()].length);
         setImage(movingActorImages[Direction.getDirectionByRotation(getRotation()).getValue()][animationStep]);
         if(canMove(steps)){
             super.move(steps);
