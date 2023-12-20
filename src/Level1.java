@@ -11,6 +11,7 @@ public class Level1 extends World
     /**
      * Erzeuge eine Welt.
      */
+
     public Level1()
     {
         super(20, 20, 40);
