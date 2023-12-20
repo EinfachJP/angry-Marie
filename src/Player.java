@@ -2,7 +2,7 @@ import greenfoot.*;
 import java.util.List;
 public class Player extends Charakter {
     //Attribute
-    private Carrot[] inventory = new Carrot[8];
+    private Items[] inventory = new Items[8];
     private float stamina = 20;
     private int damageP = 5;
     private int oldY = 0;
@@ -121,6 +121,7 @@ public class Player extends Charakter {
         }
         if (Greenfoot.isKeyDown("M")) {
             takeCarrotonyou();
+            takeCrystalonyou();
         }
         if (Greenfoot.isKeyDown("V")) {
             transform();
@@ -167,14 +168,29 @@ public class Player extends Charakter {
         }
     }
 
+    public void takeCrystalonyou() {
+        World myWorld = getWorld();
+        List<Crystal> crystals = myWorld.getObjectsAt(getX(), getY(), Crystal.class);
+        if (crystals.size() > 0) {
+            Crystal crystal = crystals.get(0);
+            for (int i = 0; i < inventory.length; i++) {
+                if (inventory[i] == null) {
+                    inventory[i] = crystal;
+                    myWorld.removeObject(crystal);
+                    break;
+                }
+            }
+        }
+    }
+
 
     public void placeCarrot(int x, int y) {
         for (int i = 0; i < inventory.length; i++) {
 
             if (inventory[i] != null) {
                 World world = getWorld();
-                Carrot carrot = inventory[i];
-                world.addObject(carrot, x, y);
+                Items items = inventory[i];
+                world.addObject(items, x, y);
                 inventory[i] = null;
                 break;
             }

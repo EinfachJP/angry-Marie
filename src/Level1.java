@@ -14,7 +14,7 @@ public class Level1 extends World
     public Level1()
     {
         super(20, 20, 40);
-        GreenfootImage cell2=new GreenfootImage("cell.jpg");
+        GreenfootImage cell2=new GreenfootImage("cell.greenGrass.jpg");
         cell2.scale(20,20);
         setBackground(cell2);
         setPaintOrder(Star.class, Player.class, Carrot.class, Rock.class);

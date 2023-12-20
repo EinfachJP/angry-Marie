@@ -1,7 +1,7 @@
 import greenfoot.Actor;
 import greenfoot.GreenfootImage;
 import greenfoot.Color;
-public class Carrot extends Actor
+public class Carrot extends Items
 {
     private int weight = 5;
 
