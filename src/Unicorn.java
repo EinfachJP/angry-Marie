@@ -238,6 +238,6 @@ public class Unicorn extends Charakter {
         Player player = new Player();
         getWorld().addObject(player, x, y);
         getWorld().removeObject(this);
+        //hallo
     }
-
 }
