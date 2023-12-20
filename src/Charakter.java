@@ -24,6 +24,7 @@ public class Charakter extends MovingActor {
      * getter, setter
      */
 
+
     public int getDamage() {
         return damage;
     }
