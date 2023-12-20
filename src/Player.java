@@ -11,16 +11,14 @@ public class Player extends Charakter {
     private World level2 = new Level2();
     private World level1 = null;
     private InventoryVisualizer visualizer;
-    private World[][] worlds = new World[20][20];
-    private int xWorld = 0;
-    private int yWorld = 9;
+    private int Worldx = 0;
+    private int Worldy = 19;
 
     //Konstruktoren
     public Player(int life, int stamina) {
         super(50, 50);
         setLife(life);
         setStamina(stamina);
-        generateWorlds();
     }
 
     public Player() {
@@ -235,24 +233,8 @@ public class Player extends Charakter {
         int myNewX = getX();
         int myNewY = getY();
 
-        if ((direction == 0) & (yWorld != 0)) {
-            yWorld = yWorld - 1;
-            myNewY = 9;
-        }
-        if ((direction == 1) & (xWorld != 19)) {
-            xWorld = xWorld + 1;
-            myNewX = 0;
-        }
-        if ((direction == 2) & (yWorld != 19)) {
-            yWorld = yWorld - 1;
-            myNewY = 0;
-        }
-        if ((direction == 3) & (xWorld != 0)) {
-            xWorld = xWorld + 1;
-            myNewY = 9;
-        }
-        World newWorld = worlds[xWorld][yWorld];
-        moveWorld(newWorld, myNewX, myNewY);
+        Level1 myWorld = (Level1) getWorld();
+        myWorld.moveWorld(direction ,this);
     }
 
     public void regenStamina() {
@@ -278,13 +260,6 @@ public class Player extends Charakter {
         monsters.addAll(getIntersectingObjects(Monster.class));
         if (monsters.size() > 0) {
             monsters.get(0).hit(damageP);
-        }
-    }
-    public void generateWorlds(){
-        for(int i=19;i>=0;i--){
-            for(int j=0;j<20;j++){
-                worlds[i][j] = new Level2();
-            }
         }
     }
     public void transform() {

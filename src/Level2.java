@@ -19,5 +19,4 @@ public class Level2 extends World
         setBackground(cell2);
         setPaintOrder(Star.class, Player.class, Carrot.class, Rock.class);
     }
-
 }
