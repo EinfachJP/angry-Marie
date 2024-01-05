@@ -44,8 +44,8 @@ public class Unicorn extends Player {
     public void transform() {
         int x = getX();
         int y = getY();
-        Human human = new Human();
-        getWorld().addObject(human, x, y);
+        Player player = new Player();
+        getWorld().addObject(player, x, y);
         getWorld().removeObject(this);
     }
 }
