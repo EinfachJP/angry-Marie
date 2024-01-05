@@ -1,5 +1,5 @@
 #Greenfoot project file
-class.Player.image=./images/Player/WEST.png
+class.Human.image=./images/Player/WEST.png
 class.Carrot.image=karotte.png
 class.MovingActor.image=./images/Player/WEST.png
 class.Tree.image=Tree.png
