@@ -21,9 +21,12 @@ public class Monster extends Charakter {
 //Methoden
 
     public void act() {
-        //performMovement();
+        performMovement();
         super.act();
         hitPlayer();
+        if (getLife() <= 0) {
+            die();
+        }
     }
 
     public void performMovement() {
@@ -47,13 +50,14 @@ public class Monster extends Charakter {
             }
     }
 
-
-
     public void hitPlayer() {
         World myWorld = getWorld();
         List<Player> players = getNeighbours(1,true,Player.class);
         if (players.size() > 0) {
             players.get(0).hit(getDamage());
         }
+    }
+    private void die() {
+        getWorld().removeObject(this);
     }
 }

@@ -10,3 +10,4 @@ simulation.speed=30
 world.lastInstantiated=Level1
 class.Unicorn.image=images/Unicorn/WEST.png
 class.Crystal.image=Kristall.png
+class.FeuerMonster.image=FeuerMonster.png

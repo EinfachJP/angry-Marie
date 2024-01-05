@@ -32,8 +32,8 @@ public class Level1 extends World
 
         Rock rock = new Rock();
         addObject(rock, 5, 5);
-        Monster monster =  new Monster(50,2);
-        addObject(monster, 0, 0);
+        FeuerMonster FeuerMonster =  new FeuerMonster(10,1);
+        addObject(FeuerMonster, 1, 0);
 
         /*Unicorn unicorn = new Unicorn();
         addObject(unicorn, 6, 5);*/
