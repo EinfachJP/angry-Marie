@@ -26,7 +26,9 @@ public class Unicorn extends Player {
             //getImage().drawString(String.valueOf(life), 0, 20);
             //draw((int) stamina);
             regenStamina();
-
+        }
+        if (Greenfoot.isKeyDown("v")) {
+            transform();
         }
     }
     @Override
@@ -39,5 +41,11 @@ public class Unicorn extends Player {
         world.addObject(visualizer,0, world.getHeight()-1);
 
     }
-
+    public void transform() {
+        int x = getX();
+        int y = getY();
+        Human human = new Human();
+        getWorld().addObject(human, x, y);
+        getWorld().removeObject(this);
+    }
 }

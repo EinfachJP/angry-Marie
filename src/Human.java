@@ -55,6 +55,9 @@ public class Human extends Player {
             regenStamina();
 
         }
+        if (Greenfoot.isKeyDown("v")) {
+            transform();
+        }
     }
 
 
@@ -67,5 +70,12 @@ public class Human extends Player {
         }
         visualizer = new InventoryVisualizer(inventory);
         world.addObject(visualizer, 0, world.getHeight() - 1);
+    }
+    public void transform() {
+        int x = getX();
+        int y = getY();
+        Unicorn unicorn = new Unicorn();
+        getWorld().addObject(unicorn, x, y);
+        getWorld().removeObject(this);
     }
 }

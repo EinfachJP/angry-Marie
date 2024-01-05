@@ -102,10 +102,9 @@ public class Player extends Charakter {
             takeCarrotonyou();
             takeCrystalonyou();
         }
-        if (Greenfoot.isKeyDown("V")) {
+        if (Greenfoot.isKeyDown("v")) {
             transform();
         }
-
     }
 
     public void destroyRock() {
@@ -234,7 +233,6 @@ public class Player extends Charakter {
             monsters.get(0).hit(damageP);
         }
     }
-
     public void transform() {
         int x = getX();
         int y = getY();
