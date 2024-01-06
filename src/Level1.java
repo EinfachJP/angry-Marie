@@ -18,31 +18,12 @@ public class Level1 extends World {
         GreenfootImage cell2 = new GreenfootImage("cell.lightgreenGrass.jpg");
         cell2.scale(20, 20);
         setBackground(cell2);
-        setPaintOrder(Star.class,Player.class, Carrot.class, Rock.class);
+        setPaintOrder(Star.class, Player.class, Carrot.class, Rock.class);
 
-        Player player= new Player(100, 50);
+        Player player = new Player(100, 50);
         addObject(player, 3, 3);
-
-        Carrot carrot = new Carrot(5, 20, 20);
-        addObject(carrot, 1, 5);
-        Carrot ligthcarrot = new Carrot(3, 20, 20);
-        addObject(ligthcarrot, 1, 6);
-
-        Rock rock = new Rock();
-        addObject(rock, 5, 5);
-
-        Crystal crystal = new Crystal(30, 30);
-        addObject(crystal, 10, 10);
-        Gun gun = new Gun(30,30);
-        addObject(gun,1,1);
-
-        for (int i = getHeight() - 2; i >= 0; i--) {
-            Rock rockRow = new Rock();
-            addObject(rockRow, 7, i);
-        }
-
-        Tree tree = new Tree();
-        addObject(tree, 3, 1);
+        placeStones(Greenfoot.getRandomNumber(20));
+        placeTrees(Greenfoot.getRandomNumber(10));
     }
 
     public void act() {
@@ -64,6 +45,20 @@ public class Level1 extends World {
             addObject(new FeuerMonster(10, 1), x, y);
         } else {
             addObject(new Snake(5, 1), x, y);
+        }
+    }
+    private void placeStones(int numberOfStones) {
+        for (int i = 0; i < numberOfStones; i++) {
+            int x = Greenfoot.getRandomNumber(getWidth());
+            int y = Greenfoot.getRandomNumber(getHeight()-1);
+            addObject(new Rock(), x, y);
+        }
+    }
+    private void placeTrees(int numberOfTrees) {
+        for (int i = 0; i < numberOfTrees; i++) {
+            int x = Greenfoot.getRandomNumber(getWidth());
+            int y = Greenfoot.getRandomNumber(getHeight()-1);
+            addObject(new Tree(), x, y);
         }
     }
 

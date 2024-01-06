@@ -7,13 +7,4 @@ public class Crystal extends Items {
         cristal.scale(width,height);
         setImage(cristal);
     }
-
-
-
-
-
-
-
-
-
 }

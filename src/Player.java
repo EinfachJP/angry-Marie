@@ -98,8 +98,6 @@ public class Player extends Charakter {
             } else {
                 getToNewWorld(3);
             }
-
-
         }
         if (Greenfoot.isKeyDown("Q")) {
             eatCarrotonyou();
@@ -114,7 +112,6 @@ public class Player extends Charakter {
             hitMonster();
         }
         if (Greenfoot.isKeyDown("M")) {
-            //takeCarrotonyou();
             takeItemsonyou();
         }
         if (Greenfoot.isKeyDown("V")) {
@@ -124,7 +121,6 @@ public class Player extends Charakter {
             shoot();
         }
     }
-
 
     public void destroyRock() {
         if (!canMove()) {
@@ -137,7 +133,6 @@ public class Player extends Charakter {
         }
     }
 
-
     public void eatCarrotonyou() {
         World myWorld = getWorld();
         List<Carrot> carrots = myWorld.getObjectsAt(getX(), getY(), Carrot.class);
@@ -148,21 +143,6 @@ public class Player extends Charakter {
         }
 
     }
-
-    /*public void takeCarrotonyou() {
-        World myWorld = getWorld();
-        List<Carrot> carrots = myWorld.getObjectsAt(getX(), getY(), Carrot.class);
-        if (carrots.size() > 0) {
-            Carrot carrot = carrots.get(0);
-            for (int i = 0; i < inventory.length; i++) {
-                if (inventory[i] == null) {
-                    inventory[i] = carrot;
-                    myWorld.removeObject(carrot);
-                    break;
-                }
-            }
-        }
-    }*/
 
     public void takeItemsonyou() {
         World myWorld = getWorld();
@@ -203,10 +183,6 @@ public class Player extends Charakter {
         stamina = stamina - 1;
     }
 
-
-    /**
-     * moves one step forwardA
-     */
     public void move() {
         if (canMove()) {
             if (stamina > 1) {
