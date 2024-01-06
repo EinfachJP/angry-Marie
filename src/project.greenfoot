@@ -1,5 +1,5 @@
 #Greenfoot project file
-class.Human.image=./images/Player/WEST.png
+class.Player.image=./images/Player/WEST.png
 class.Carrot.image=karotte.png
 class.MovingActor.image=./images/Player/WEST.png
 class.Tree.image=Tree.png
@@ -11,3 +11,4 @@ world.lastInstantiated=Level1
 class.Unicorn.image=images/Unicorn/WEST.png
 class.Crystal.image=Kristall.png
 class.FeuerMonster.image=FeuerMonster.png
+class.Bullet.image=bullet.png

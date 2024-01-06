@@ -1,8 +1,7 @@
 import greenfoot.*;
 import java.util.List;
-
 public class Player extends Charakter {
-    // Attribute und Methoden, die gemeinsam für alle Player-Subklassen sind
+    //Attribute
     private Items[] inventory = new Items[8];
     private float stamina = 20;
     private int damageP = 5;
@@ -12,7 +11,10 @@ public class Player extends Charakter {
     private World level2 = new Level2();
     private World level1 = null;
     private InventoryVisualizer visualizer;
+    private int Worldx = 0;
+    private int Worldy = 19;
 
+    //Konstruktoren
     public Player(int life, int stamina) {
         super(50, 50);
         setLife(life);
@@ -32,24 +34,34 @@ public class Player extends Charakter {
         getImage().drawString(String.valueOf(stamina), 0, 20);
     }
 
+    //Methoden
+
+    /**
+     * Wird einmal pro Zeiteinheit aufgerufen
+     */
     public void act() {
         super.act();
         if (getLife() > 0) {
             performMovement();
+            //getImage().drawString(String.valueOf(life), 0, 20);
+            //draw((int) stamina);
             regenStamina();
+
         }
     }
 
+
+    @Override
     protected void addedToWorld(World world) {
         super.addedToWorld(world);
         if (level1 == null) {
             level1 = getWorld();
+
         }
         visualizer = new InventoryVisualizer(inventory);
         world.addObject(visualizer, 0, world.getHeight() - 1);
     }
 
-    // Weitere gemeinsame Methoden
 
     public void performMovement() {
         if (Greenfoot.isKeyDown("W")) {
@@ -102,10 +114,14 @@ public class Player extends Charakter {
             takeCarrotonyou();
             takeCrystalonyou();
         }
-        if (Greenfoot.isKeyDown("v")) {
+        if (Greenfoot.isKeyDown("V")) {
             transform();
         }
+        if (Greenfoot.isKeyDown("r")) {
+            shoot();
+        }
     }
+
 
     public void destroyRock() {
         if (!canMove()) {
@@ -118,6 +134,7 @@ public class Player extends Charakter {
         }
     }
 
+
     public void eatCarrotonyou() {
         World myWorld = getWorld();
         List<Carrot> carrots = myWorld.getObjectsAt(getX(), getY(), Carrot.class);
@@ -126,6 +143,7 @@ public class Player extends Charakter {
             myWorld.removeObject(carrot);
             setLife(getLife() + carrot.getWeight());
         }
+
     }
 
     public void takeCarrotonyou() {
@@ -158,17 +176,16 @@ public class Player extends Charakter {
         }
     }
 
+
     public void placeCarrot(int x, int y) {
-        World myWorld = getWorld();
-        List<Crystal> crystals = myWorld.getObjectsAt(getX(), getY(), Crystal.class);
-        if (crystals.size() > 0) {
-            Crystal crystal = crystals.get(0);
-            for (int i = 0; i < inventory.length; i++) {
-                if (inventory[i] == null) {
-                    inventory[i] = crystal;
-                    myWorld.removeObject(crystal);
-                    break;
-                }
+        for (int i = 0; i < inventory.length; i++) {
+
+            if (inventory[i] != null) {
+                World world = getWorld();
+                Items items = inventory[i];
+                world.addObject(items, x, y);
+                inventory[i] = null;
+                break;
             }
         }
     }
@@ -183,6 +200,10 @@ public class Player extends Charakter {
         stamina = stamina - 1;
     }
 
+
+    /**
+     * moves one step forwardA
+     */
     public void move() {
         if (canMove()) {
             if (stamina > 1) {
@@ -193,6 +214,8 @@ public class Player extends Charakter {
     }
 
     public void moveWorld(World newWorld, int myNewX, int myNewY) {
+
+
         World myWorld = getWorld();
 
         myWorld.removeObject(this);
@@ -233,11 +256,32 @@ public class Player extends Charakter {
             monsters.get(0).hit(damageP);
         }
     }
+    public void shoot() {
+        MouseInfo mouse = Greenfoot.getMouseInfo();
+
+        if (mouse != null) {
+            int mouseX = mouse.getX();
+            int mouseY = mouse.getY();
+
+            Bullet bullet = new Bullet();
+            getWorld().addObject(bullet, getX(), getY());
+
+            double angle = Math.toDegrees(Math.atan2(mouseY - getY(), mouseX - getX()));
+            bullet.setRotation((int) angle);
+            bullet.move(10);
+        }
+    }
     public void transform() {
-        int x = getX();
-        int y = getY();
-        Unicorn unicorn = new Unicorn();
-        getWorld().addObject(unicorn, x, y);
-        getWorld().removeObject(this);
+        for (int i = 0; i < inventory.length; i++) {
+            if (inventory[i] instanceof Crystal) {
+                int x = getX();
+                int y = getY();
+                Unicorn unicorn = new Unicorn();
+                getWorld().addObject(unicorn, x, y);
+                getWorld().removeObject(this);
+                inventory[i] = null;
+                break;
+            }
+        }
     }
 }
