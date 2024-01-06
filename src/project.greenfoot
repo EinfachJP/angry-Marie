@@ -13,3 +13,4 @@ class.Crystal.image=Kristall.png
 class.FeuerMonster.image=FeuerMonster.png
 class.Bullet.image=bullet.png
 class.Gun.image=gun.png
+class.Shadow.image=Shadow.png

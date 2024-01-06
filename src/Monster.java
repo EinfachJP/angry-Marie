@@ -32,7 +32,7 @@ public class Monster extends Charakter {
     }
     public void dropItem() {
         Items items = new Items();
-        int randomNumber = Greenfoot.getRandomNumber(100);
+        int randomNumber = Greenfoot.getRandomNumber(10);
 
         if (randomNumber < CRYSTAL_DROP_CHANCE) {
             getWorld().addObject(new Crystal(30,30), getX(), getY());
@@ -45,23 +45,26 @@ public class Monster extends Charakter {
 
     public void performMovement() {
         int rngDirection = Greenfoot.getRandomNumber(4);
-        int steps = Greenfoot.getRandomNumber(1);
-            if (rngDirection == 0) {
-                turn(Direction.NORTH);
-                move(1);
-            }
-            if (rngDirection == 1) {
-                turn(Direction.WEST);
-                move(1);
-            }
-            if (rngDirection == 2) {
-                turn(Direction.SOUTH);
-                move(1);
-            }
-            if (rngDirection == 3) {
-                turn(Direction.EAST);
-                move(1);
-            }
+
+        int currentX = getX();
+        int currentY = getY();
+
+        if (rngDirection == 0) {
+            turn(Direction.NORTH);
+            move(1);
+        } else if (rngDirection == 1) {
+            turn(Direction.WEST);
+            move(1);
+        } else if (rngDirection == 2) {
+            turn(Direction.SOUTH);
+            move(1);
+        } else if (rngDirection == 3) {
+            turn(Direction.EAST);
+            move(1);
+        }
+        if (getOneIntersectingObject(Items.class) != null) {
+            setLocation(currentX, currentY);
+        }
     }
 
     public void hitPlayer() {

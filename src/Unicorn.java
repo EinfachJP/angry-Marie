@@ -2,7 +2,7 @@ import greenfoot.*;
 import java.util.List;
 public class Unicorn extends Charakter {
     //Attribute
-    private Items[] inventory = new Items[8];
+    private Items[] inventory = new Items[9];
     private float stamina = 20;
     private int damageP = 5;
     private int oldY = 0;
@@ -33,11 +33,12 @@ public class Unicorn extends Charakter {
         stamina = newStamina;
         getImage().drawString(String.valueOf(stamina), 0, 20);
     }
+
     public void setInventory(Items[] playerInventory) {
         this.inventory = new Items[playerInventory.length];
         System.arraycopy(playerInventory, 0, this.inventory, 0, playerInventory.length);
-    }
 
+    }
     /**
      * Wird einmal pro Zeiteinheit aufgerufen
      */
@@ -230,7 +231,7 @@ public class Unicorn extends Charakter {
         int myNewY = getY();
 
         Level1 myWorld = (Level1) getWorld();
-        myWorld.moveWorld(direction ,this);
+        myWorld.moveWorld(direction, this);
     }
 
     public void regenStamina() {
@@ -258,6 +259,7 @@ public class Unicorn extends Charakter {
             monsters.get(0).hit(damageP);
         }
     }
+
     public void shoot() {
         for (int i = 0; i < inventory.length; i++) {
             if (inventory[i] instanceof Gun) {
@@ -277,12 +279,22 @@ public class Unicorn extends Charakter {
             }
         }
     }
+
     public void transform() {
         int x = getX();
         int y = getY();
-        Player player = new Player();
-        player.setInventory(this.inventory);
-        getWorld().addObject(player, x, y);
+
+        if (inventory != null && inventory.length > 0) {
+            for (int i = 0; i < inventory.length; i++) {
+                if (inventory[i] instanceof Crystal) {
+                    inventory[i] = null;
+                    break;
+                }
+            }
+        }
+        Player newPlayer = new Player();
+        newPlayer.setInventory(this.inventory);
+        getWorld().addObject(newPlayer, x, y);
         getWorld().removeObject(this);
     }
 }

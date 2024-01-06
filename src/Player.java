@@ -2,7 +2,7 @@ import greenfoot.*;
 import java.util.List;
 public class Player extends Charakter {
     //Attribute
-    private Items[] inventory = new Items[8];
+    private Items[] inventory = new Items[9];
     private float stamina = 20;
     private int damageP = 5;
     private int oldY = 0;
@@ -72,7 +72,7 @@ public class Player extends Charakter {
             if (getY() > 0) {
                 move();
             } else {
-                getToNewWorld(0);
+                //getToNewWorld(0);
             }
         }
         if (Greenfoot.isKeyDown("D")) {
@@ -80,7 +80,7 @@ public class Player extends Charakter {
             if (getX() < 19) {
                 move();
             } else {
-                getToNewWorld(1);
+                //getToNewWorld(1);
             }
         }
         if (Greenfoot.isKeyDown("S")) {
@@ -88,7 +88,7 @@ public class Player extends Charakter {
             if (getY() < 19) {
                 move();
             } else {
-                getToNewWorld(2);
+                //getToNewWorld(2);
             }
         }
         if (Greenfoot.isKeyDown("A")) {
@@ -96,7 +96,7 @@ public class Player extends Charakter {
             if (getX() > 0) {
                 move();
             } else {
-                getToNewWorld(3);
+                //getToNewWorld(3);
             }
         }
         if (Greenfoot.isKeyDown("Q")) {
@@ -106,7 +106,7 @@ public class Player extends Charakter {
             destroyRock();
         }
         if (Greenfoot.isKeyDown("N")) {
-            placeCarrotonyou();
+            placeItemHere();
         }
         if (Greenfoot.isKeyDown("F")) {
             hitMonster();
@@ -141,7 +141,6 @@ public class Player extends Charakter {
             myWorld.removeObject(carrot);
             setLife(getLife() + carrot.getWeight());
         }
-
     }
 
     public void takeItemsonyou() {
@@ -159,8 +158,7 @@ public class Player extends Charakter {
         }
     }
 
-
-    public void placeCarrot(int x, int y) {
+    public void placeItem(int x, int y) {
         for (int i = 0; i < inventory.length; i++) {
 
             if (inventory[i] != null) {
@@ -173,10 +171,10 @@ public class Player extends Charakter {
         }
     }
 
-    public void placeCarrotonyou() {
+    public void placeItemHere() {
         int x = getX();
         int y = getY();
-        placeCarrot(x, y);
+        placeItem(x, y);
     }
 
     public void consumStamina() {
@@ -187,12 +185,12 @@ public class Player extends Charakter {
         if (canMove()) {
             if (stamina > 1) {
                 move(1);
-                consumStamina();
+                //consumStamina();
             }
         }
     }
 
-    public void moveWorld(World newWorld, int myNewX, int myNewY) {
+    /*public void moveWorld(World newWorld, int myNewX, int myNewY) {
 
 
         World myWorld = getWorld();
@@ -208,7 +206,7 @@ public class Player extends Charakter {
 
         Level1 myWorld = (Level1) getWorld();
         myWorld.moveWorld(direction ,this);
-    }
+    }*/
 
     public void regenStamina() {
         if (getWorld() != null) {
@@ -243,7 +241,6 @@ public class Player extends Charakter {
                 if (mouse != null) {
                     int mouseX = mouse.getX();
                     int mouseY = mouse.getY();
-
                     Bullet bullet = new Bullet(30, 30);
                     getWorld().addObject(bullet, getX(), getY());
 

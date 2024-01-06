@@ -4,24 +4,27 @@ import java.util.List;
 
 public class Bullet extends Actor {
     public Bullet(int width, int height) {
-        GreenfootImage cristal = new GreenfootImage("bullet.png");
-        cristal.scale(width, height);
-        setImage(cristal);
+        GreenfootImage bullet = new GreenfootImage("bullet.png");
+        bullet.scale(width, height);
+        setImage(bullet);
     }
     public void act() {
-        move(5);
-        if (getX() < 0 || getX() >= getWorld().getWidth() || getY() < 0 || getY() >= getWorld().getHeight()) {
+        move(2);
+        hitMonster();
+        checkEdge();
+    }
+
+    private void hitMonster() {
+        World myWorld = getWorld();
+        List<Monster> monsters = getIntersectingObjects(Monster.class);
+        if (!monsters.isEmpty()) {
+            monsters.get(0).hit(2);
             getWorld().removeObject(this);
         }
-        hitMonster();
     }
-    public void hitMonster() {
-        World myWorld = getWorld();
-        List<Monster> monsters = getNeighbours(1, true, Monster.class);
-        monsters.addAll(getIntersectingObjects(Monster.class));
-        if (monsters.size() > 0) {
-            monsters.get(0).hit(2);
+    private void checkEdge() {
+        if (getWorld() != null && (getX() < 0 || getX() >= getWorld().getWidth() - 1 || getY() < 0 || getY() >= getWorld().getHeight() - 1)) {
+            getWorld().removeObject(this);
         }
     }
 }
-
