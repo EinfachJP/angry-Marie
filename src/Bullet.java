@@ -3,10 +3,13 @@ import greenfoot.*;
 import java.util.List;
 
 public class Bullet extends Actor {
+    public Bullet(int width, int height) {
+        GreenfootImage cristal = new GreenfootImage("bullet.png");
+        cristal.scale(width, height);
+        setImage(cristal);
+    }
     public void act() {
-        move(5); // Die Geschwindigkeit der Kugel, ändere dies nach Bedarf
-
-        // Überprüfe, ob die Kugel die Weltgrenzen erreicht hat, und entferne sie
+        move(5);
         if (getX() < 0 || getX() >= getWorld().getWidth() || getY() < 0 || getY() >= getWorld().getHeight()) {
             getWorld().removeObject(this);
         }

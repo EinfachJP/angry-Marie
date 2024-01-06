@@ -1,8 +1,8 @@
 import greenfoot.*;
 import java.util.List;
-public class Unicorn extends Player {
+public class Unicorn extends Charakter {
     //Attribute
-    private Carrot[] inventory = new Carrot[8];
+    private Items[] inventory = new Items[8];
     private float stamina = 20;
     private int damageP = 5;
     private int oldY = 0;
@@ -11,17 +11,32 @@ public class Unicorn extends Player {
     private World level2 = new Level2();
     private World level1 = null;
     private InventoryVisualizer visualizer;
+    private int Worldx = 0;
+    private int Worldy = 19;
+
     //Konstruktoren
-
-
-    public Unicorn() {
-        super(45, 45);
-        setLife(100);
-        setStamina(20);
+    public Unicorn(int life, int stamina) {
+        super(50, 50);
+        setLife(life);
+        setStamina(stamina);
     }
 
+    public Unicorn() {
+        super();
+    }
 
-    //Methoden1
+    public float getStamina() {
+        return stamina;
+    }
+
+    public void setStamina(float newStamina) {
+        stamina = newStamina;
+        getImage().drawString(String.valueOf(stamina), 0, 20);
+    }
+    public void setInventory(Items[] playerInventory) {
+        this.inventory = new Items[playerInventory.length];
+        System.arraycopy(playerInventory, 0, this.inventory, 0, playerInventory.length);
+    }
 
     /**
      * Wird einmal pro Zeiteinheit aufgerufen
@@ -43,11 +58,72 @@ public class Unicorn extends Player {
         super.addedToWorld(world);
         if (level1 == null) {
             level1 = getWorld();
+
         }
         visualizer = new InventoryVisualizer(inventory);
         world.addObject(visualizer, 0, world.getHeight() - 1);
-
     }
+
+
+    public void performMovement() {
+        if (Greenfoot.isKeyDown("W")) {
+            turn(Direction.NORTH);
+            if (getY() > 0) {
+                move();
+            } else {
+                getToNewWorld(0);
+            }
+        }
+        if (Greenfoot.isKeyDown("D")) {
+            turn(Direction.EAST);
+            if (getX() < 19) {
+                move();
+            } else {
+                getToNewWorld(1);
+            }
+        }
+        if (Greenfoot.isKeyDown("S")) {
+            turn(Direction.SOUTH);
+            if (getY() < 19) {
+                move();
+            } else {
+                getToNewWorld(2);
+            }
+        }
+        if (Greenfoot.isKeyDown("A")) {
+            turn(Direction.WEST);
+            if (getX() > 0) {
+                move();
+            } else {
+                getToNewWorld(3);
+            }
+
+
+        }
+        if (Greenfoot.isKeyDown("Q")) {
+            eatCarrotonyou();
+        }
+        if (Greenfoot.isKeyDown("E")) {
+            destroyRock();
+        }
+        if (Greenfoot.isKeyDown("N")) {
+            placeCarrotonyou();
+        }
+        if (Greenfoot.isKeyDown("F")) {
+            hitMonster();
+        }
+        if (Greenfoot.isKeyDown("M")) {
+            takeCarrotonyou();
+            takeCrystalonyou();
+        }
+        if (Greenfoot.isKeyDown("V")) {
+            transform();
+        }
+        if (Greenfoot.isKeyDown("r")) {
+            shoot();
+        }
+    }
+
 
     public void destroyRock() {
         if (!canMove()) {
@@ -59,6 +135,7 @@ public class Unicorn extends Player {
             }
         }
     }
+
 
     public void eatCarrotonyou() {
         World myWorld = getWorld();
@@ -86,14 +163,29 @@ public class Unicorn extends Player {
         }
     }
 
+    public void takeCrystalonyou() {
+        World myWorld = getWorld();
+        List<Crystal> crystals = myWorld.getObjectsAt(getX(), getY(), Crystal.class);
+        if (crystals.size() > 0) {
+            Crystal crystal = crystals.get(0);
+            for (int i = 0; i < inventory.length; i++) {
+                if (inventory[i] == null) {
+                    inventory[i] = crystal;
+                    myWorld.removeObject(crystal);
+                    break;
+                }
+            }
+        }
+    }
+
 
     public void placeCarrot(int x, int y) {
         for (int i = 0; i < inventory.length; i++) {
 
             if (inventory[i] != null) {
                 World world = getWorld();
-                Carrot carrot = inventory[i];
-                world.addObject(carrot, x, y);
+                Items items = inventory[i];
+                world.addObject(items, x, y);
                 inventory[i] = null;
                 break;
             }
@@ -111,15 +203,6 @@ public class Unicorn extends Player {
     }
 
 
-    public float getStamina() {
-        return stamina;
-    }
-
-    public void setStamina(float newStamina) {
-        stamina = newStamina;
-        getImage().drawString(String.valueOf(stamina), 0, 20);
-    }
-
     /**
      * moves one step forwardA
      */
@@ -129,35 +212,25 @@ public class Unicorn extends Player {
                 move(1);
                 consumStamina();
             }
-        } else {
-            setLife(getLife() - 10);
         }
-
     }
 
-    public void moveLevel() {
+    public void moveWorld(World newWorld, int myNewX, int myNewY) {
 
-        int x = getX();
-        int y = getY();
+
         World myWorld = getWorld();
-        if (myWorld == level1) {
 
-            if (x < 9 && y == 0) {
-                level1.removeObject(this);
-                level2.addObject(this, 3, 4);
+        myWorld.removeObject(this);
+        newWorld.addObject(this, myNewX, myNewY);
+        Greenfoot.setWorld(newWorld);
+    }
 
-                Greenfoot.setWorld(level2);
+    public void getToNewWorld(int direction) {
+        int myNewX = getX();
+        int myNewY = getY();
 
-            }
-        }
-        if (myWorld == level2) {
-            if (x < 9 && y == 6) {
-                level2.removeObject(this);
-                level1.addObject(this, 3, 4);
-                Greenfoot.setWorld(level1);
-
-            }
-        }
+        Level1 myWorld = (Level1) getWorld();
+        myWorld.moveWorld(direction ,this);
     }
 
     public void regenStamina() {
@@ -185,11 +258,30 @@ public class Unicorn extends Player {
             monsters.get(0).hit(damageP);
         }
     }
+    public void shoot() {
+        for (int i = 0; i < inventory.length; i++) {
+            if (inventory[i] instanceof Gun) {
+                MouseInfo mouse = Greenfoot.getMouseInfo();
 
+                if (mouse != null) {
+                    int mouseX = mouse.getX();
+                    int mouseY = mouse.getY();
+
+                    Bullet bullet = new Bullet(30, 30);
+                    getWorld().addObject(bullet, getX(), getY());
+
+                    double angle = Math.toDegrees(Math.atan2(mouseY - getY(), mouseX - getX()));
+                    bullet.setRotation((int) angle);
+                    bullet.move(10);
+                }
+            }
+        }
+    }
     public void transform() {
         int x = getX();
         int y = getY();
-        Player player = new Player(100,1000);
+        Player player = new Player();
+        player.setInventory(this.inventory);
         getWorld().addObject(player, x, y);
         getWorld().removeObject(this);
     }

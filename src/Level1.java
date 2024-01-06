@@ -8,7 +8,7 @@ import java.util.Random;
  */
 public class Level1 extends World {
     private Random random = new Random();
-    private int spawnTimer = Greenfoot.getRandomNumber(31) + 30; // Starte mit einem zufälligen Timer-Wert zwischen 30 und 60 Sekunden
+    private int spawnTimer = Greenfoot.getRandomNumber(31) + 30;
 
     /**
      * Create a world with default settings.
@@ -33,6 +33,8 @@ public class Level1 extends World {
 
         Crystal crystal = new Crystal(30, 30);
         addObject(crystal, 10, 10);
+        Gun gun = new Gun(30,30);
+        addObject(gun,1,1);
 
         for (int i = getHeight() - 2; i >= 0; i--) {
             Rock rockRow = new Rock();
@@ -47,9 +49,9 @@ public class Level1 extends World {
         updateSpawnTimer();
     }
 
-    public void moveWorld(int direction, Player player) {
+    public void moveWorld(int direction, Player unicorn) {
         WorldsMap map = WorldsMap.getInstance(this);
-        map.moveWorld(direction, player, this);
+        map.moveWorld(direction, unicorn, this);
     }
 
     private void spawnRandomMonster() {
@@ -75,6 +77,9 @@ public class Level1 extends World {
     }
 
     private void resetSpawnTimer() {
-        spawnTimer = Greenfoot.getRandomNumber(31) + 30; // Setze den Timer auf einen neuen zufälligen Wert zwischen 30 und 60 Sekunden
+        spawnTimer = Greenfoot.getRandomNumber(31) + 30;
+    }
+
+    public void moveWorld(int direction, Unicorn unicorn) {
     }
 }

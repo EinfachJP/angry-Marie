@@ -33,7 +33,10 @@ public class Player extends Charakter {
         stamina = newStamina;
         getImage().drawString(String.valueOf(stamina), 0, 20);
     }
-
+    public void setInventory(Items[] playerInventory) {
+        this.inventory = new Items[playerInventory.length];
+        System.arraycopy(playerInventory, 0, this.inventory, 0, playerInventory.length);
+    }
     //Methoden
 
     /**
@@ -111,8 +114,8 @@ public class Player extends Charakter {
             hitMonster();
         }
         if (Greenfoot.isKeyDown("M")) {
-            takeCarrotonyou();
-            takeCrystalonyou();
+            //takeCarrotonyou();
+            takeItemsonyou();
         }
         if (Greenfoot.isKeyDown("V")) {
             transform();
@@ -146,7 +149,7 @@ public class Player extends Charakter {
 
     }
 
-    public void takeCarrotonyou() {
+    /*public void takeCarrotonyou() {
         World myWorld = getWorld();
         List<Carrot> carrots = myWorld.getObjectsAt(getX(), getY(), Carrot.class);
         if (carrots.size() > 0) {
@@ -159,17 +162,17 @@ public class Player extends Charakter {
                 }
             }
         }
-    }
+    }*/
 
-    public void takeCrystalonyou() {
+    public void takeItemsonyou() {
         World myWorld = getWorld();
-        List<Crystal> crystals = myWorld.getObjectsAt(getX(), getY(), Crystal.class);
-        if (crystals.size() > 0) {
-            Crystal crystal = crystals.get(0);
+        List<Items> items = myWorld.getObjectsAt(getX(), getY(), Items.class);
+        if (items.size() > 0) {
+            Items item = items.get(0);
             for (int i = 0; i < inventory.length; i++) {
                 if (inventory[i] == null) {
-                    inventory[i] = crystal;
-                    myWorld.removeObject(crystal);
+                    inventory[i] = item;
+                    myWorld.removeObject(item);
                     break;
                 }
             }
@@ -257,18 +260,22 @@ public class Player extends Charakter {
         }
     }
     public void shoot() {
-        MouseInfo mouse = Greenfoot.getMouseInfo();
+        for (int i = 0; i < inventory.length; i++) {
+            if (inventory[i] instanceof Gun) {
+                MouseInfo mouse = Greenfoot.getMouseInfo();
 
-        if (mouse != null) {
-            int mouseX = mouse.getX();
-            int mouseY = mouse.getY();
+                if (mouse != null) {
+                    int mouseX = mouse.getX();
+                    int mouseY = mouse.getY();
 
-            Bullet bullet = new Bullet();
-            getWorld().addObject(bullet, getX(), getY());
+                    Bullet bullet = new Bullet(30, 30);
+                    getWorld().addObject(bullet, getX(), getY());
 
-            double angle = Math.toDegrees(Math.atan2(mouseY - getY(), mouseX - getX()));
-            bullet.setRotation((int) angle);
-            bullet.move(10);
+                    double angle = Math.toDegrees(Math.atan2(mouseY - getY(), mouseX - getX()));
+                    bullet.setRotation((int) angle);
+                    bullet.move(10);
+                }
+            }
         }
     }
     public void transform() {
@@ -277,10 +284,9 @@ public class Player extends Charakter {
                 int x = getX();
                 int y = getY();
                 Unicorn unicorn = new Unicorn();
+                unicorn.setInventory(this.inventory);
                 getWorld().addObject(unicorn, x, y);
                 getWorld().removeObject(this);
-                inventory[i] = null;
-                break;
             }
         }
     }

@@ -8,7 +8,8 @@ public class Monster extends Charakter {
 
 
 
-//Konstruktoren
+    private static final int CRYSTAL_DROP_CHANCE = 5;
+    private static final int GUN_DROP_CHANCE = 3;
 
 
     public Monster(int life, int monsterDamage) {
@@ -26,6 +27,21 @@ public class Monster extends Charakter {
         hitPlayer();
         if (getLife() <= 0) {
             die();
+        }
+    }
+    public void dropItem() {
+        Items items = new Items();
+        int randomNumber = Greenfoot.getRandomNumber(9); // Zufällige Zahl zwischen 0 und 9
+
+        if (randomNumber < CRYSTAL_DROP_CHANCE) {
+            // Droppe Kristall (selten)
+            getWorld().addObject(new Crystal(30,30), getX(), getY());
+        } else if (randomNumber < GUN_DROP_CHANCE) {
+            // Droppe Gun (weniger selten)
+            getWorld().addObject(new Gun(30,30), getX(), getY());
+        } else {
+            // Droppe Karotte (häufig)
+            getWorld().addObject(new Carrot(5,20,20), getX(), getY());
         }
     }
 
