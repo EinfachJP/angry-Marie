@@ -9,6 +9,16 @@ public class IntelligentCharacter extends Character {
     public World level1 = null;
     public int damageP = 5;
     public float stamina = 40;
+    public int shoots;
+
+
+    public int getShoots() {
+        return shoots;
+    }
+
+    public void setShoots(int shoots) {
+        this.shoots = shoots;
+    }
 
 
     public IntelligentCharacter(int sizeX, int sizeY) {
