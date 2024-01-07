@@ -10,7 +10,6 @@ public class Tree extends BlockingObject {
 
     public void hit() {
         int i = Greenfoot.getRandomNumber(2);
-        System.out.print(i);
         if (i == 0) {
             getWorld().addObject(new Pickaxe(), getX(), getY());
             getWorld().addObject(new Star(), getX(), getY()); //Bei einem Treffer wird kurz ein Stern eingeblendet

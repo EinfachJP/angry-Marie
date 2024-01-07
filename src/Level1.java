@@ -23,7 +23,7 @@ public class Level1 extends World {
         Player player = new Player(99, 50);
         addObject(player, 3, 3);
         placeStones(Greenfoot.getRandomNumber(10));
-        placeTrees(Greenfoot.getRandomNumber(5));
+        placeTrees(5);
         placeCarrots(Greenfoot.getRandomNumber(3));
         Axe axe = new Axe();
         addObject(axe, 2, 2);
@@ -58,7 +58,7 @@ public class Level1 extends World {
         int y = random.nextInt(getHeight()-1);
 
         if (monsterType == 0) {
-            addObject(new FeuerMonster(10, 20), x, y);
+            addObject(new FeuerMonster(10, 10), x, y);
         } else {
             if(monsterType==1){
                 addObject(new Snake(5, 1), x, y);

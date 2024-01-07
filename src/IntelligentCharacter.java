@@ -103,6 +103,25 @@ public class IntelligentCharacter extends Character {
             i = 9;
             placeItem(getX(), getY(), i);
         }
+        if(Greenfoot.isKeyDown("c")){
+            craftGun();
+        }
+    }
+    public void craftGun(){
+        World myWorld = getWorld();
+        List<Stone> stones = myWorld.getObjectsAt(getX(), getY(), Stone.class);
+        List<Gold> golds = myWorld.getObjectsAt(getX(), getY(), Gold.class);
+        List<Lumber> lumbers = myWorld.getObjectsAt(getX(), getY(), Lumber.class);
+        if (lumbers.size() > 2 && stones.size() > 4 && golds.size() > 2){
+            getWorld().addObject(new Gun(20, 20), getX(), getY());
+            myWorld.removeObject(lumbers.get(0));
+            myWorld.removeObject(stones.get(0));
+            myWorld.removeObject(stones.get(1));
+            myWorld.removeObject(stones.get(2));
+            myWorld.removeObject(stones.get(3));
+            myWorld.removeObject(golds.get(0));
+            myWorld.removeObject(golds.get(1));
+        }
     }
     public void placeItem(int x, int y, int i) {
         if (inventory[i] != null) {
