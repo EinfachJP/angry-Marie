@@ -6,6 +6,7 @@ public class IntelligentCharacter extends Character {
     public int life;
     public InventoryVisualizer visualizer;
     public Items[] inventory = new Items[10];
+    private World Hauptmenü = new Hauptmenü();
     public World level1 = null;
     public int damageP = 5;
     public float stamina = 40;
@@ -117,7 +118,13 @@ public class IntelligentCharacter extends Character {
         if(Greenfoot.isKeyDown("c")){
             craftGun();
         }
+        if (Greenfoot.mouseClicked(Rock.class)) {
+            moveHauptmenü();
+            mm=mm+1;
+        }
+
     }
+    int mm = 0;
     public void craftGun(){
         World myWorld = getWorld();
         List<Stone> stones = myWorld.getObjectsAt(getX(), getY(), Stone.class);
@@ -238,4 +245,19 @@ public class IntelligentCharacter extends Character {
             setLife(0);
         }
     }
+
+    public void moveHauptmenü() {
+        World myWorld = getWorld();
+
+        if (myWorld == level1) {
+            level1.removeObject(this);
+            Hauptmenü.addObject(this, 3, 4);
+
+            Greenfoot.setWorld(Hauptmenü);
+
+            System.out.println(mm);
+        }
+    }
+
+
 }

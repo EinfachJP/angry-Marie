@@ -34,6 +34,8 @@ public class Level1 extends World {
         }
         Axe axe = new Axe();
         addObject(axe, 2, 2);
+        HauptmenüIcon hauptmenüIcon = new HauptmenüIcon();
+        addObject(hauptmenüIcon, 0, getHeight());
     }
 
     public void act() {
