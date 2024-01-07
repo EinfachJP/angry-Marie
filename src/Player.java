@@ -10,6 +10,7 @@ public class Player extends Charakter {
     private float srgT = 0.1f;
     private World level2 = new Level2();
     private World level1 = null;
+    private World Menü = null;
     private InventoryVisualizer visualizer;
     private int Worldx = 0;
     private int Worldy = 19;

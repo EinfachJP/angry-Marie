@@ -35,7 +35,7 @@ public class Level1 extends World {
         WorldsMap map = WorldsMap.getInstance(this);
         map.moveWorld(direction, unicorn, this);
     }
-    /*private void checkPlayerLocation() {
+    private void checkPlayerLocation() {
         Player player = (Player) getObjects(Player.class).get(0);
         int playerX = player.getX();
         int playerY = player.getY();
@@ -46,7 +46,7 @@ public class Level1 extends World {
             Greenfoot.delay(50); // Warte 50 Schritte, um die Meldung anzuzeigen
             Greenfoot.setWorld(new Level2()); // Wechsle zur neuen Welt (ersetze NewWorld durch den Namen deiner neuen Weltklasse)
         }
-    }*/
+    }
 
     private void spawnRandomMonster() {
         int monsterType = random.nextInt(3);
