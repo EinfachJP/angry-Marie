@@ -12,6 +12,17 @@ public class Monster extends Character {
     private static final int GUN_DROP_CHANCE = 5;
     private static final int CARROT_DROP_CHANCE = 50;
 
+    public int score = 0;
+
+
+    public int getScore() {
+        return score;
+    }
+
+    public void setScore(int score) {
+        this.score = score;
+    }
+
 
     public Monster(int life, int monsterDamage) {
         super(30,30);
@@ -83,5 +94,8 @@ public class Monster extends Character {
     }
     private void die() {
         getWorld().removeObject(this);
+    }
+    public void score(int scorePoints){
+        setScore(getScore()+scorePoints);
     }
 }
