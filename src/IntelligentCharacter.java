@@ -1,3 +1,4 @@
+import greenfoot.Greenfoot;
 import greenfoot.World;
 import java.util.List;
 public class IntelligentCharacter extends Character {
@@ -53,23 +54,64 @@ public class IntelligentCharacter extends Character {
         }
     }
 
-    public void placeItem(int x, int y) {
-        for (int i = 0; i < inventory.length; i++) {
 
-            if (inventory[i] != null) {
-                World world = getWorld();
-                Items items = inventory[i];
-                world.addObject(items, x, y);
-                inventory[i] = null;
-                break;
-            }
-        }
+    public void act() {
+        draw(life);
+        itemNumber();
     }
 
-    public void placeItemHere() {
-        int x = getX();
-        int y = getY();
-        placeItem(x, y);
+
+    public void itemNumber() {
+        int i;
+        if (Greenfoot.isKeyDown("1")) {
+            i = 0;
+            placeItem(getX(), getY(), i);
+        }
+        if (Greenfoot.isKeyDown("2")) {
+            i = 1;
+            placeItem(getX(), getY(), i);
+        }
+        if (Greenfoot.isKeyDown("3")) {
+            i = 2;
+            placeItem(getX(), getY(), i);
+        }
+        if (Greenfoot.isKeyDown("4")) {
+            i = 3;
+            placeItem(getX(), getY(), i);
+        }
+        if (Greenfoot.isKeyDown("5")) {
+            i = 4;
+            placeItem(getX(), getY(), i);
+        }
+        if (Greenfoot.isKeyDown("6")) {
+            i = 5;
+            placeItem(getX(), getY(), i);
+        }
+        if (Greenfoot.isKeyDown("7")) {
+            i = 6;
+            placeItem(getX(), getY(), i);
+        }
+        if (Greenfoot.isKeyDown("8")) {
+            i = 7;
+            placeItem(getX(), getY(), i);
+        }
+        if (Greenfoot.isKeyDown("9")) {
+            i = 8;
+            placeItem(getX(), getY(), i);
+        }
+        if (Greenfoot.isKeyDown("0")) {
+            i = 9;
+            placeItem(getX(), getY(), i);
+        }
+    }
+    public void placeItem(int x, int y, int i) {
+        if (inventory[i] != null) {
+            World world = getWorld();
+            Items items = inventory[i];
+            world.addObject(items, x, y);
+            inventory[i] = null;
+        }
+
     }
 
         public boolean pickaxeInInv() {
@@ -94,6 +136,7 @@ public class IntelligentCharacter extends Character {
             List<Tree> trees = myWorld.getObjectsAt(getNextX(1), getNextY(1), Tree.class);
             if (trees.size() > 0 && axeInInv()) {
                 Tree tree = trees.get(0);
+                tree.hit();
                 myWorld.removeObject(tree);
             }
         }
@@ -151,9 +194,7 @@ public class IntelligentCharacter extends Character {
             }
         }
     }
-    public void act() {
-        draw(life);
-    }
+
     public void hit(int damage) {
         if (life>0) {
             setLife(getLife() - damage);

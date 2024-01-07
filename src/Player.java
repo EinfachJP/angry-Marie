@@ -75,9 +75,6 @@ public class Player extends IntelligentCharacter {
             destroyRock();
             destroyTree();
         }
-        if (Greenfoot.isKeyDown("N")) {
-            placeItemHere();
-        }
         if (Greenfoot.isKeyDown("F")) {
             hitMonster();
         }

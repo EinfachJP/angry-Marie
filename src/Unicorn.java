@@ -82,9 +82,6 @@ public class Unicorn extends IntelligentCharacter {
         if (Greenfoot.isKeyDown("E")) {
             destroyRock();
         }
-        if (Greenfoot.isKeyDown("N")) {
-            placeItemHere();
-        }
         if (Greenfoot.isKeyDown("F")) {
             hitMonster();
         }

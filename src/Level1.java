@@ -24,14 +24,9 @@ public class Level1 extends World {
         addObject(player, 3, 3);
         placeStones(Greenfoot.getRandomNumber(10));
         placeTrees(Greenfoot.getRandomNumber(5));
-        Crystal crystal = new Crystal(20, 20);
-        addObject(crystal, 5, 5);
-        Carrot carrot = new Carrot(5, 20, 20);
-        addObject(carrot, 2, 2);
-        Carrot carrot2 = new Carrot(5, 20, 20);
-        addObject(carrot2, 5, 3);
-        Pickaxe pickAxe = new Pickaxe();
-        addObject(pickAxe, 2, 2);
+        placeCarrots(Greenfoot.getRandomNumber(3));
+        Axe axe = new Axe();
+        addObject(axe, 2, 2);
     }
 
     public void act() {
@@ -87,6 +82,13 @@ public class Level1 extends World {
         }
     }
 
+    private void placeCarrots(int numberOfCarrots) {
+        for (int i = 0; i < numberOfCarrots; i++) {
+            int x = Greenfoot.getRandomNumber(getWidth());
+            int y = Greenfoot.getRandomNumber(getHeight() - 1);
+            addObject(new Carrot(5, 20, 20), x, y);
+        }
+    }
     private void updateSpawnTimer() {
         spawnTimer--;
 
