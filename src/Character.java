@@ -1,30 +1,15 @@
-import greenfoot.Greenfoot;
-import greenfoot.World;
-import java.util.List;
-public class Charakter extends MovingActor {
-
+public class Character extends MovingActor{
     private int life = 4;
     private int damage = 2;
 
-    /**
-     * Creates a MovingActor
-     *
-     * sizeX
-     * sizeY
-     */
-    public Charakter(int sizeX, int sizeY) {
+    public Character(int sizeX, int sizeY) {
         super(sizeX, sizeY);
     }
 
-    public Charakter() {
+
+    public Character() {
         super();
     }
-
-    /**
-     * getter, setter
-     */
-
-
 
     public int getDamage() {
         return damage;
@@ -54,6 +39,4 @@ public class Charakter extends MovingActor {
             int life = getLife();
         }
     }
-
-
 }

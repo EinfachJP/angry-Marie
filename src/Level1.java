@@ -24,6 +24,12 @@ public class Level1 extends World {
         addObject(player, 3, 3);
         placeStones(Greenfoot.getRandomNumber(10));
         placeTrees(Greenfoot.getRandomNumber(5));
+        /*Crystal crystal = new Crystal(20, 20);
+        addObject(crystal, 5, 5);
+        Carrot carrot = new Carrot(5, 20, 20);
+        addObject(carrot, 2, 2);
+        Carrot carrot2 = new Carrot(5, 20, 20);
+        addObject(carrot2, 5, 3);*/
     }
 
     public void act() {
@@ -57,11 +63,11 @@ public class Level1 extends World {
         if (monsterType == 0) {
             addObject(new FeuerMonster(10, 20), x, y);
         } else {
-            if(monsterType==1){
-                addObject(new Snake(5, 1), x, y);
-            }else{
-                addObject(new Shadow(20,5),x,y);
-            }
+            //if(monsterType==1){
+               // addObject(new Snake(5, 1), x, y);
+           // }else{
+              //  addObject(new Shadow(20,5),x,y);
+          //  }
         }
     }
     private void placeStones(int numberOfStones) {
