@@ -151,6 +151,8 @@ public class Unicorn extends IntelligentCharacter {
                     double angle = Math.toDegrees(Math.atan2(mouseY - getY(), mouseX - getX()));
                     bullet.setRotation((int) angle);
                     bullet.move(10);
+                    inventory[i] =null;
+                    break;
                 }
             }
         }

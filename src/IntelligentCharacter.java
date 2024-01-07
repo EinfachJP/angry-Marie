@@ -36,9 +36,6 @@ public class IntelligentCharacter extends Character {
         System.arraycopy(playerInventory, 0, this.inventory, 0, playerInventory.length);
     }
 
-
-
-
     public void takeItemsOnYou() {
         World myWorld = getWorld();
         List<Items> items = myWorld.getObjectsAt(getX(), getY(), Items.class);
@@ -54,13 +51,11 @@ public class IntelligentCharacter extends Character {
         }
     }
 
-
     public void act() {
         draw(life);
         itemNumber();
         dead();
     }
-
 
     public void itemNumber() {
         int i;

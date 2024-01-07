@@ -85,7 +85,7 @@ public class Player extends IntelligentCharacter {
             transform();
         }
         if (Greenfoot.isKeyDown("r")) {
-            shoot();
+                shoot();
         }
     }
 
@@ -125,28 +125,48 @@ public class Player extends IntelligentCharacter {
         }
     }
 
-    public void shoot() {
+    /*public void shoot() {
         for (Items items : inventory) {
             if (items instanceof Gun) {
+                    MouseInfo mouse = Greenfoot.getMouseInfo();
+                    if (mouse != null) {
+                        int mouseX = mouse.getX();
+                        int mouseY = mouse.getY();
+                        Bullet bullet = new Bullet(30, 30);
+                        getWorld().addObject(bullet, getX(), getY());
+
+                        double angle = Math.toDegrees(Math.atan2(mouseY - getY(), mouseX - getX()));
+                        bullet.setRotation((int) angle);
+                        bullet.move(2);
+                }
+            }
+        }
+    }*/
+    public void shoot() {
+        for (int i = 0; i < inventory.length; i++) {
+            if (inventory[i] instanceof Gun) {
                 MouseInfo mouse = Greenfoot.getMouseInfo();
 
                 if (mouse != null) {
                     int mouseX = mouse.getX();
                     int mouseY = mouse.getY();
+
                     Bullet bullet = new Bullet(30, 30);
                     getWorld().addObject(bullet, getX(), getY());
 
                     double angle = Math.toDegrees(Math.atan2(mouseY - getY(), mouseX - getX()));
                     bullet.setRotation((int) angle);
                     bullet.move(10);
+                    inventory[i] =null;
+                    break;
                 }
             }
         }
     }
+
     public void transform() {
         for (Items items : inventory) {
             if (items instanceof Crystal) {
-
                 int x = getX();
                 int y = getY();
                 Unicorn unicorn = new Unicorn(getLife());
