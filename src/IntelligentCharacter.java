@@ -77,11 +77,21 @@ public class IntelligentCharacter extends Character {
         placeItem(x, y);
     }
 
-    public void destroyRock() {
+        public boolean pickAxeInInv() {
+            for (int i = 0; i < inventory.length; i++) {
+                if (inventory[i] instanceof PickAxe) {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+
+    public void destroyRock(){
         if (!canMove()) {
             World myWorld = getWorld();
             List<Rock> rocks = myWorld.getObjectsAt(getNextX(1), getNextY(1), Rock.class);
-            if (rocks.size() > 0) {
+            if (rocks.size() > 0 && pickAxeInInv()) {
                 Rock rock = rocks.get(0);
                 myWorld.removeObject(rock);
             }

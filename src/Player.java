@@ -40,7 +40,7 @@ public class Player extends IntelligentCharacter {
             if (getY() > 0) {
                 move();
             } else {
-                //getToNewWorld(0);
+                getToNewWorld(0);
             }
         }
         if (Greenfoot.isKeyDown("D")) {
@@ -48,7 +48,7 @@ public class Player extends IntelligentCharacter {
             if (getX() < 19) {
                 move();
             } else {
-                //getToNewWorld(1);
+                getToNewWorld(1);
             }
         }
         if (Greenfoot.isKeyDown("S")) {
@@ -56,7 +56,7 @@ public class Player extends IntelligentCharacter {
             if (getY() < 19) {
                 move();
             } else {
-                //getToNewWorld(2);
+                getToNewWorld(2);
             }
         }
         if (Greenfoot.isKeyDown("A")) {
@@ -64,7 +64,7 @@ public class Player extends IntelligentCharacter {
             if (getX() > 0) {
                 move();
             } else {
-                //getToNewWorld(3);
+                getToNewWorld(3);
             }
 
 
@@ -93,7 +93,7 @@ public class Player extends IntelligentCharacter {
     }
 
 
-    /*public void moveWorld(World newWorld, int myNewX, int myNewY) {
+    public void moveWorld(World newWorld, int myNewX, int myNewY) {
 
 
         World myWorld = getWorld();
@@ -109,7 +109,7 @@ public class Player extends IntelligentCharacter {
 
         Level1 myWorld = (Level1) getWorld();
         myWorld.moveWorld(direction ,this);
-    }*/
+    }
 
     public void regenStamina() {
         if (getWorld() != null) {

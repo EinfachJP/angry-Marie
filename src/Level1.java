@@ -20,7 +20,7 @@ public class Level1 extends World {
         setBackground(cell2);
         setPaintOrder(Star.class, Player.class, Carrot.class, Rock.class);
 
-        Player player = new Player(100, 50);
+        Player player = new Player(99, 50);
         addObject(player, 3, 3);
         placeStones(Greenfoot.getRandomNumber(10));
         placeTrees(Greenfoot.getRandomNumber(5));
@@ -34,7 +34,7 @@ public class Level1 extends World {
 
     public void act() {
         updateSpawnTimer();
-       // checkPlayerLocation();
+        checkPlayerLocation();
     }
 
     public void moveWorld(int direction, Player unicorn) {
