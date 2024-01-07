@@ -1,5 +1,5 @@
 public class Character extends MovingActor{
-    private int life = 4;
+    private int monsterLife = 4;
     private int damage = 2;
 
     public Character(int sizeX, int sizeY) {
@@ -19,24 +19,23 @@ public class Character extends MovingActor{
         this.damage = damage;
     }
 
-    public int getLife() {
-        return life;
+    public int getMonsterLife() {
+        return monsterLife;
     }
 
-    public void setLife(int life) {
-        this.life = life;
+    public void setMonsterLife(int life) {
+        this.monsterLife = life;
     }
 
 
 
     public void act() {
-        draw(life);
+        draw(monsterLife);
     }
 
     public void hit(int damage) {
-        if (life>0) {
-            setLife(getLife() - damage);
-            int life = getLife();
+        if (monsterLife>0) {
+            setMonsterLife(getMonsterLife() - damage);
         }
     }
 }

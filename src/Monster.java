@@ -14,7 +14,7 @@ public class Monster extends Character {
 
     public Monster(int life, int monsterDamage) {
         super(30,30);
-        setLife(life);
+        setMonsterLife(life);
         setDamage(monsterDamage);
     }
 
@@ -25,7 +25,7 @@ public class Monster extends Character {
         performMovement();
         super.act();
         hitPlayer();
-        if (getLife() <= 0) {
+        if (getMonsterLife() <= 0) {
             dropItem();
             die();
         }

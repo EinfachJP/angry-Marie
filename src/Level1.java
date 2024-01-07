@@ -24,12 +24,12 @@ public class Level1 extends World {
         addObject(player, 3, 3);
         placeStones(Greenfoot.getRandomNumber(10));
         placeTrees(Greenfoot.getRandomNumber(5));
-        /*Crystal crystal = new Crystal(20, 20);
+        Crystal crystal = new Crystal(20, 20);
         addObject(crystal, 5, 5);
         Carrot carrot = new Carrot(5, 20, 20);
         addObject(carrot, 2, 2);
         Carrot carrot2 = new Carrot(5, 20, 20);
-        addObject(carrot2, 5, 3);*/
+        addObject(carrot2, 5, 3);
     }
 
     public void act() {

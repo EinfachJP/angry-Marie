@@ -17,8 +17,9 @@ public class Player extends IntelligentCharacter {
         setStamina(stamina);
     }
 
-    public Player() {
+    public Player(int life) {
         super();
+        setLife(life);
     }
 
     //Methoden
@@ -148,9 +149,10 @@ public class Player extends IntelligentCharacter {
     public void transform() {
         for (int i = 0; i < inventory.length; i++) {
             if (inventory[i] instanceof Crystal) {
+
                 int x = getX();
                 int y = getY();
-                Unicorn unicorn = new Unicorn();
+                Unicorn unicorn = new Unicorn(getLife());
                 unicorn.setInventory(this.inventory);
                 getWorld().addObject(unicorn, x, y);
                 getWorld().removeObject(this);

@@ -2,12 +2,12 @@ import greenfoot.World;
 import java.util.List;
 public class IntelligentCharacter extends Character {
 
+    public int life;
     public InventoryVisualizer visualizer;
     public Items[] inventory = new Items[10];
     public World level1 = null;
     public int damageP = 5;
     public float stamina = 40;
-
 
 
     public IntelligentCharacter(int sizeX, int sizeY) {
@@ -17,13 +17,22 @@ public class IntelligentCharacter extends Character {
         super();
     }
 
+    public int getLife() {
+        return life;
+    }
+
+    public void setLife(int life) {
+        this.life = life;
+    }
+
+
     public float getStamina() {
         return stamina;
     }
 
     public void setStamina(float newStamina) {
         stamina = newStamina;
-        getImage().drawString(String.valueOf(stamina), 0, 20);
+        //getImage().drawString(String.valueOf(stamina), 0, 20);
     }
 
     public void setInventory(Items[] playerInventory) {
@@ -119,6 +128,12 @@ public class IntelligentCharacter extends Character {
             }
         }
     }
-
-
+    public void act() {
+        draw(life);
+    }
+    public void hit(int damage) {
+        if (life>0) {
+            setLife(getLife() - damage);
+        }
+    }
 }

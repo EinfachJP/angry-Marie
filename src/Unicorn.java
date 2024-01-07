@@ -18,8 +18,9 @@ public class Unicorn extends IntelligentCharacter {
         setStamina(stamina);
     }
 
-    public Unicorn() {
+    public Unicorn(int life) {
         super();
+        setLife(life);
     }
 
 
@@ -170,7 +171,7 @@ public class Unicorn extends IntelligentCharacter {
                 }
             }
         }
-        Player newPlayer = new Player();
+        Player newPlayer = new Player(getLife());
         newPlayer.setInventory(this.inventory);
         getWorld().addObject(newPlayer, x, y);
         getWorld().removeObject(this);
