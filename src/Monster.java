@@ -31,7 +31,7 @@ public class Monster extends Character {
         }
     }
     public void dropItem() {
-        int randomNumber = Greenfoot.getRandomNumber(10);
+        int randomNumber = Greenfoot.getRandomNumber(50);
 
         if (randomNumber < CRYSTAL_DROP_CHANCE) {
             getWorld().addObject(new Crystal(30,30), getX(), getY());
