@@ -85,7 +85,24 @@ public class IntelligentCharacter extends Character {
             }
             return false;
         }
-
+    public boolean axeInInv() {
+        for (int i = 0; i < inventory.length; i++) {
+            if (inventory[i] instanceof Axe) {
+                return true;
+            }
+        }
+        return false;
+    }
+    public void destroyTree(){
+        if (!canMove()) {
+            World myWorld = getWorld();
+            List<Tree> trees = myWorld.getObjectsAt(getNextX(1), getNextY(1), Tree.class);
+            if (trees.size() > 0 && axeInInv()) {
+                Tree tree = trees.get(0);
+                myWorld.removeObject(tree);
+            }
+        }
+    }
 
     public void destroyRock(){
         if (!canMove()) {
