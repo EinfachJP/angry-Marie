@@ -1,12 +1,11 @@
 import greenfoot.*;
-import java.util.List;
+
 public class Player extends IntelligentCharacter {
     //Attribute
     private int oldY = 0;
     private int oldX = 0;
     private float srgT = 0.1f;
     private World level2 = new Level2();
-    private InventoryVisualizer visualizer;
     private int Worldx = 0;
     private int Worldy = 19;
 
@@ -70,7 +69,7 @@ public class Player extends IntelligentCharacter {
 
         }
         if (Greenfoot.isKeyDown("Q")) {
-            eatCarrotonyou();
+            eatCarrotOnYou();
         }
         if (Greenfoot.isKeyDown("E")) {
             destroyRock();
@@ -83,7 +82,7 @@ public class Player extends IntelligentCharacter {
             hitMonster();
         }
         if (Greenfoot.isKeyDown("M")) {
-            takeItemsonyou();
+            takeItemsOnYou();
         }
         if (Greenfoot.isKeyDown("V")) {
             transform();
@@ -130,8 +129,8 @@ public class Player extends IntelligentCharacter {
     }
 
     public void shoot() {
-        for (int i = 0; i < inventory.length; i++) {
-            if (inventory[i] instanceof Gun) {
+        for (Items items : inventory) {
+            if (items instanceof Gun) {
                 MouseInfo mouse = Greenfoot.getMouseInfo();
 
                 if (mouse != null) {
@@ -148,8 +147,8 @@ public class Player extends IntelligentCharacter {
         }
     }
     public void transform() {
-        for (int i = 0; i < inventory.length; i++) {
-            if (inventory[i] instanceof Crystal) {
+        for (Items items : inventory) {
+            if (items instanceof Crystal) {
 
                 int x = getX();
                 int y = getY();

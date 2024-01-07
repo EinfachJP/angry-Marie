@@ -25,11 +25,6 @@ public class IntelligentCharacter extends Character {
         this.life = life;
     }
 
-
-    public float getStamina() {
-        return stamina;
-    }
-
     public void setStamina(float newStamina) {
         stamina = newStamina;
         //getImage().drawString(String.valueOf(stamina), 0, 20);
@@ -43,7 +38,7 @@ public class IntelligentCharacter extends Character {
 
 
 
-    public void takeItemsonyou() {
+    public void takeItemsOnYou() {
         World myWorld = getWorld();
         List<Items> items = myWorld.getObjectsAt(getX(), getY(), Items.class);
         if (items.size() > 0) {
@@ -77,17 +72,17 @@ public class IntelligentCharacter extends Character {
         placeItem(x, y);
     }
 
-        public boolean pickAxeInInv() {
-            for (int i = 0; i < inventory.length; i++) {
-                if (inventory[i] instanceof PickAxe) {
+        public boolean pickaxeInInv() {
+            for (Items items : inventory) {
+                if (items instanceof Pickaxe) {
                     return true;
                 }
             }
             return false;
         }
     public boolean axeInInv() {
-        for (int i = 0; i < inventory.length; i++) {
-            if (inventory[i] instanceof Axe) {
+        for (Items items : inventory) {
+            if (items instanceof Axe) {
                 return true;
             }
         }
@@ -108,15 +103,17 @@ public class IntelligentCharacter extends Character {
         if (!canMove()) {
             World myWorld = getWorld();
             List<Rock> rocks = myWorld.getObjectsAt(getNextX(1), getNextY(1), Rock.class);
-            if (rocks.size() > 0 && pickAxeInInv()) {
+            if (rocks.size() > 0 && pickaxeInInv()) {
                 Rock rock = rocks.get(0);
+                rock.hit();
                 myWorld.removeObject(rock);
+
             }
         }
     }
 
 
-    public void eatCarrotonyou() {
+    public void eatCarrotOnYou() {
         World myWorld = getWorld();
         List<Carrot> carrots = myWorld.getObjectsAt(getX(), getY(), Carrot.class);
         if (carrots.size() > 0) {
@@ -126,7 +123,6 @@ public class IntelligentCharacter extends Character {
         }
     }
     public void hitMonster() {
-        World myWorld = getWorld();
         List<Monster> monsters = getNeighbours(1, true, Monster.class);
         monsters.addAll(getIntersectingObjects(Monster.class));
         if (monsters.size() > 0) {
@@ -143,7 +139,7 @@ public class IntelligentCharacter extends Character {
         world.addObject(visualizer, 5, world.getHeight() - 1);
     }
 
-    public void consumStamina() {
+    public void consumeStamina() {
         stamina = stamina - 1;
     }
 
@@ -151,7 +147,7 @@ public class IntelligentCharacter extends Character {
         if (canMove()) {
             if (stamina > 1) {
                 move(1);
-                consumStamina();
+                consumeStamina();
             }
         }
     }

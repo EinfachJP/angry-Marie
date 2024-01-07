@@ -5,7 +5,7 @@ import greenfoot.GreenfootImage;
  * @author SAE
  * @version 3.0
  */
-public class InventorySlot extends BlockingObjekt
+public class InventorySlot extends BlockingObject
 {
     private Actor item;
     

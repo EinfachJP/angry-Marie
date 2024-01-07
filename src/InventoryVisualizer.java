@@ -1,7 +1,7 @@
 import greenfoot.*;
 
 
-public class InventoryVisualizer extends BlockingObjekt {
+public class InventoryVisualizer extends BlockingObject {
 
     private final InventorySlot[] slots;
     private final Actor[] inventory;

@@ -16,3 +16,5 @@ class.Gun.image=gun.png
 class.Shadow.image=Shadow.png
 class.SoppButton.image=StoppButton.png
 class.StartButton.image=StartButton.png
+class.Pickaxe.image = PickAxe40.png
+class.Axe.image = Axe.png

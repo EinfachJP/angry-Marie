@@ -1,10 +1,8 @@
-import greenfoot.Actor;
 import greenfoot.GreenfootImage;
 import greenfoot.Color;
 public class Carrot extends Items
 {
     private int weight = 5;
-
 
     public Carrot(int weight, int width, int height){
         setWeight(weight);

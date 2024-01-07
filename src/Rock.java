@@ -1,7 +1,7 @@
-import greenfoot.Actor;
+import greenfoot.Greenfoot;
 import greenfoot.GreenfootImage;
 
-public class Rock extends BlockingObjekt {
+public class Rock extends BlockingObject {
 
 
 	/**
@@ -9,6 +9,11 @@ public class Rock extends BlockingObjekt {
 	 */
 	public void hit() {
 		getWorld().addObject(new Star(), getX(), getY()); //Bei einem Treffer wird kurz ein Stern eingeblendet
+		int i = Greenfoot.getRandomNumber(3);
+		System.out.print(i);
+		if(i == 0){
+			getWorld().addObject(new Crystal(20,20), getX(), getY());
+		}
 
 	}
 	public Rock(){

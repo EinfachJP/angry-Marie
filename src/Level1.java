@@ -30,6 +30,8 @@ public class Level1 extends World {
         addObject(carrot, 2, 2);
         Carrot carrot2 = new Carrot(5, 20, 20);
         addObject(carrot2, 5, 3);
+        Pickaxe pickAxe = new Pickaxe();
+        addObject(pickAxe, 2, 2);
     }
 
     public void act() {

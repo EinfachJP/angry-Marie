@@ -15,7 +15,6 @@ public class Bullet extends Actor {
     }
 
     private void hitMonster() {
-        World myWorld = getWorld();
         List<Monster> monsters = getIntersectingObjects(Monster.class);
         if (!monsters.isEmpty()) {
             monsters.get(0).hit(2);

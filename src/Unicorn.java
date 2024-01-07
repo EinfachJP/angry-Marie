@@ -1,5 +1,5 @@
 import greenfoot.*;
-import java.util.List;
+
 public class Unicorn extends IntelligentCharacter {
     //Attribute
 
@@ -77,7 +77,7 @@ public class Unicorn extends IntelligentCharacter {
 
         }
         if (Greenfoot.isKeyDown("Q")) {
-            eatCarrotonyou();
+            eatCarrotOnYou();
         }
         if (Greenfoot.isKeyDown("E")) {
             destroyRock();
@@ -89,7 +89,7 @@ public class Unicorn extends IntelligentCharacter {
             hitMonster();
         }
         if (Greenfoot.isKeyDown("M")) {
-            takeItemsonyou();
+            takeItemsOnYou();
         }
         if (Greenfoot.isKeyDown("V")) {
             transform();

@@ -1,5 +1,5 @@
 import greenfoot.Greenfoot;
-import greenfoot.World;
+
 
 import java.util.List;
 
@@ -31,7 +31,6 @@ public class Monster extends Character {
         }
     }
     public void dropItem() {
-        Items items = new Items();
         int randomNumber = Greenfoot.getRandomNumber(10);
 
         if (randomNumber < CRYSTAL_DROP_CHANCE) {
@@ -68,7 +67,6 @@ public class Monster extends Character {
     }
 
     public void hitPlayer() {
-        World myWorld = getWorld();
         List<Player> players = getNeighbours(1,true,Player.class);
         if (players.size() > 0) {
             players.get(0).hit(getDamage());

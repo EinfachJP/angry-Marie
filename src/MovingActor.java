@@ -81,9 +81,9 @@ public class MovingActor extends ImprovedActor {
 
         //System.out.println("direction=" + getRotation() + ", dx=" + dx + ", dy=" + dy + ", current.x=" + getX()  + ", current.y=" + getY()  + ", next.x=" + x  + ", next.y=" + getY());
 
-        List<BlockingObjekt> blockingObjekt = myWorld.getObjectsAt(x, y, BlockingObjekt.class);
+        List<BlockingObject> blockingObject = myWorld.getObjectsAt(x, y, BlockingObject.class);
 
-        return blockingObjekt.isEmpty();
+        return blockingObject.isEmpty();
 
     }
 
