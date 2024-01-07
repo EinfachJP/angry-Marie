@@ -10,6 +10,7 @@ public class Monster extends Character {
 
     private static final int CRYSTAL_DROP_CHANCE = 1;
     private static final int GUN_DROP_CHANCE = 5;
+    private static final int CARROT_DROP_CHANCE = 50;
 
 
     public Monster(int life, int monsterDamage) {
@@ -32,15 +33,23 @@ public class Monster extends Character {
     }
     public void dropItem() {
         int randomNumber = Greenfoot.getRandomNumber(50);
-
-        if (randomNumber < CRYSTAL_DROP_CHANCE) {
-            getWorld().addObject(new Crystal(30,30), getX(), getY());
-        } else if (randomNumber < GUN_DROP_CHANCE) {
-            getWorld().addObject(new Gun(30,30), getX(), getY());
+        int fiftyFifty = Greenfoot.getRandomNumber(2);
+        if (fiftyFifty == 0) {
+            if (randomNumber < CRYSTAL_DROP_CHANCE) {
+                getWorld().addObject(new Crystal(30, 30), getX(), getY());
+            } else if (randomNumber < GUN_DROP_CHANCE) {
+                getWorld().addObject(new Gun(30, 30), getX(), getY());
+            } else {
+                getWorld().addObject(new Carrot(5, 20, 20), getX(), getY());
+            }
         } else {
-            getWorld().addObject(new Carrot(5,20,20), getX(), getY());
+            int x = getX();
+            int y = getY();
+            Rock rock = new Rock();
+            getWorld().addObject(rock, x, y);
         }
     }
+
 
     public void performMovement() {
         int rngDirection = Greenfoot.getRandomNumber(4);

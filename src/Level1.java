@@ -22,8 +22,8 @@ public class Level1 extends World {
 
         Player player = new Player(99, 50);
         addObject(player, 3, 3);
-        placeStones(Greenfoot.getRandomNumber(10));
-        placeTrees(5);
+        placeStones(Greenfoot.getRandomNumber(25)+4);
+        placeTrees(Greenfoot.getRandomNumber(10)+4);
         placeCarrots(Greenfoot.getRandomNumber(3));
         Axe axe = new Axe();
         addObject(axe, 2, 2);
@@ -52,15 +52,15 @@ public class Level1 extends World {
     }
 
     private void spawnRandomMonster() {
-        int monsterType = random.nextInt(3);
+        int monsterType = random.nextInt(4);
 
         int x = random.nextInt(getWidth());
         int y = random.nextInt(getHeight()-1);
 
         if (monsterType == 0) {
-            addObject(new FeuerMonster(10, 10), x, y);
+            addObject(new FeuerMonster(10, 20), x, y);
         } else {
-            if(monsterType==1){
+            if(monsterType==1||monsterType==2){
                 addObject(new Snake(5, 1), x, y);
             }else{
                 addObject(new Shadow(20,5),x,y);

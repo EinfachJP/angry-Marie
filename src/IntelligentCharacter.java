@@ -202,7 +202,7 @@ public class IntelligentCharacter extends Character {
     }
 
     public void consumeStamina() {
-        stamina = stamina - 1;
+        stamina = stamina ;
     }
 
     public void move() {
