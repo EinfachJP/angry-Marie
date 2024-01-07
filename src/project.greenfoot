@@ -19,3 +19,4 @@ class.StartButton.image=StartButton.png
 class.Pickaxe.image = PickAxe40.png
 class.Axe.image = Axe.png
 class.Lumber.image = Board.png
+class.GameOver.image = GAMEOVER.png

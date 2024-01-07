@@ -58,6 +58,7 @@ public class IntelligentCharacter extends Character {
     public void act() {
         draw(life);
         itemNumber();
+        dead();
     }
 
 
@@ -181,7 +182,9 @@ public class IntelligentCharacter extends Character {
         if (carrots.size() > 0) {
             Carrot carrot = carrots.get(0);
             myWorld.removeObject(carrot);
-            setLife(getLife() + carrot.getWeight());
+            if(getLife() < 89){
+                setLife(getLife() + carrot.getWeight());
+            }
         }
     }
     public void hitMonster() {
@@ -217,6 +220,12 @@ public class IntelligentCharacter extends Character {
     public void hit(int damage) {
         if (life>0) {
             setLife(getLife() - damage);
+        }
+    }
+    public void dead(){
+        if(getLife()<=0){
+            getWorld().addObject(new GameOver(),10, 10);
+            setLife(0);
         }
     }
 }

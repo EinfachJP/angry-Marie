@@ -1,5 +1,8 @@
 import greenfoot.*;
+
+import java.util.List;
 import java.util.Random;
+import greenfoot.World;
 
 /**
  * The Level1 class represents the first level of the game.
@@ -22,9 +25,13 @@ public class Level1 extends World {
 
         Player player = new Player(99, 50);
         addObject(player, 3, 3);
-        placeStones(Greenfoot.getRandomNumber(25)+4);
-        placeTrees(Greenfoot.getRandomNumber(10)+4);
+        placeStones(Greenfoot.getRandomNumber(25) + 4);
+        placeTrees(Greenfoot.getRandomNumber(10) + 4);
         placeCarrots(Greenfoot.getRandomNumber(3));
+        List<Actor> actors = this.getObjectsAt(2, 2, Actor.class);
+        if(actors.size() > 0){
+            this.removeObject(actors.get(0));
+        }
         Axe axe = new Axe();
         addObject(axe, 2, 2);
     }
@@ -38,6 +45,7 @@ public class Level1 extends World {
         WorldsMap map = WorldsMap.getInstance(this);
         map.moveWorld(direction, unicorn, this);
     }
+
     private void checkPlayerLocation() {
         Player player = (Player) getObjects(Player.class).get(0);
         int playerX = player.getX();
@@ -55,29 +63,31 @@ public class Level1 extends World {
         int monsterType = random.nextInt(4);
 
         int x = random.nextInt(getWidth());
-        int y = random.nextInt(getHeight()-1);
+        int y = random.nextInt(getHeight() - 1);
 
         if (monsterType == 0) {
             addObject(new FeuerMonster(10, 20), x, y);
         } else {
-            if(monsterType==1||monsterType==2){
+            if (monsterType == 1 || monsterType == 2) {
                 addObject(new Snake(5, 1), x, y);
-            }else{
-                addObject(new Shadow(20,5),x,y);
+            } else {
+                addObject(new Shadow(20, 5), x, y);
             }
         }
     }
+
     private void placeStones(int numberOfStones) {
         for (int i = 0; i < numberOfStones; i++) {
             int x = Greenfoot.getRandomNumber(getWidth());
-            int y = Greenfoot.getRandomNumber(getHeight()-1);
+            int y = Greenfoot.getRandomNumber(getHeight() - 1);
             addObject(new Rock(), x, y);
         }
     }
+
     private void placeTrees(int numberOfTrees) {
         for (int i = 0; i < numberOfTrees; i++) {
             int x = Greenfoot.getRandomNumber(getWidth());
-            int y = Greenfoot.getRandomNumber(getHeight()-1);
+            int y = Greenfoot.getRandomNumber(getHeight() - 1);
             addObject(new Tree(), x, y);
         }
     }
@@ -89,6 +99,7 @@ public class Level1 extends World {
             addObject(new Carrot(5, 20, 20), x, y);
         }
     }
+
     private void updateSpawnTimer() {
         spawnTimer--;
 
