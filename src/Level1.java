@@ -14,7 +14,7 @@ public class Level1 extends World {
      * Create a world with default settings.
      */
     public Level1() {
-        super(9, 9, 40);
+        super(20, 21, 40);
         GreenfootImage cell2 = new GreenfootImage("cell.lightgreenGrass.jpg");
         cell2.scale(20, 20);
         setBackground(cell2);

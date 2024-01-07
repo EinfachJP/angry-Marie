@@ -31,4 +31,5 @@ public class Carrot extends Items
         getImage().setColor(Color.BLACK);
         getImage().drawString(String.valueOf(newWeight), x, y);
     }
+
 }

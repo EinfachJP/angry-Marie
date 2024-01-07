@@ -2,7 +2,7 @@ import greenfoot.*;
 import java.util.List;
 public class Player extends Charakter {
     //Attribute
-    private Items[] inventory = new Items[9];
+    private Items[] inventory = new Items[10];
     private float stamina = 20;
     private int damageP = 5;
     private int oldY = 0;
@@ -39,27 +39,18 @@ public class Player extends Charakter {
     }
     //Methoden
 
-    /**
-     * Wird einmal pro Zeiteinheit aufgerufen
-     */
     public void act() {
         super.act();
         if (getLife() > 0) {
             performMovement();
-            //getImage().drawString(String.valueOf(life), 0, 20);
-            //draw((int) stamina);
             regenStamina();
-
         }
     }
 
-
-    @Override
     protected void addedToWorld(World world) {
         super.addedToWorld(world);
         if (level1 == null) {
             level1 = getWorld();
-
         }
         visualizer = new InventoryVisualizer(inventory);
         world.addObject(visualizer, 0, world.getHeight() - 1);
@@ -98,6 +89,8 @@ public class Player extends Charakter {
             } else {
                 //getToNewWorld(3);
             }
+
+
         }
         if (Greenfoot.isKeyDown("Q")) {
             eatCarrotonyou();
