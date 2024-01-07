@@ -104,7 +104,7 @@ public class IntelligentCharacter extends Character {
             level1 = getWorld();
         }
         visualizer = new InventoryVisualizer(inventory);
-        world.addObject(visualizer, 0, world.getHeight() - 1);
+        world.addObject(visualizer, 5, world.getHeight() - 1);
     }
 
     public void consumStamina() {

@@ -1,5 +1,5 @@
 import greenfoot.*;
-public class StartButton extends Charakter {
+public class StartButton extends Character {
     public StartButton() {
         getImage().drawString("StartButton.png", 20, 30);
     }

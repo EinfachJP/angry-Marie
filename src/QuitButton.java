@@ -1,5 +1,5 @@
 import greenfoot.*;
-public class QuitButton extends Charakter{
+public class QuitButton extends Character{
     public QuitButton() {
         getImage().drawString("StoppButton.png", 20, 30);
     }

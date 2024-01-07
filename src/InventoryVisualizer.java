@@ -1,6 +1,5 @@
 import greenfoot.*;
 
-import java.util.List;
 
 public class InventoryVisualizer extends BlockingObjekt {
 
@@ -8,13 +7,9 @@ public class InventoryVisualizer extends BlockingObjekt {
     private final Actor[] inventory;
 
     public InventoryVisualizer(Actor[] inventory) {
-        getImage().setTransparency(5);
+        getImage().setTransparency(128);
         slots = new InventorySlot[inventory.length];
         this.inventory = inventory;
-    }
-
-    public InventoryVisualizer(List<Actor> inventory) {
-        this(inventory.toArray(new Actor[0]));
     }
 
     public void act(){

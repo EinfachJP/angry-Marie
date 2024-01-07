@@ -18,10 +18,6 @@ public class InventorySlot extends BlockingObjekt
         setImage(inventory);
     }
 
-    public InventorySlot(Actor item){
-        this();
-        setItem(item);
-    }
 
     public void setItem(Actor item){
         this.item = item;

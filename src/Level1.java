@@ -63,11 +63,11 @@ public class Level1 extends World {
         if (monsterType == 0) {
             addObject(new FeuerMonster(10, 20), x, y);
         } else {
-            //if(monsterType==1){
-               // addObject(new Snake(5, 1), x, y);
-           // }else{
-              //  addObject(new Shadow(20,5),x,y);
-          //  }
+            if(monsterType==1){
+                addObject(new Snake(5, 1), x, y);
+            }else{
+                addObject(new Shadow(20,5),x,y);
+            }
         }
     }
     private void placeStones(int numberOfStones) {
