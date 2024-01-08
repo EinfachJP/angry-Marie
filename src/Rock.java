@@ -8,7 +8,7 @@ public class Rock extends BlockingObject {
 	 * Will be called on a hit.
 	 */
 	public void hit() {
-		int i = Greenfoot.getRandomNumber(5);
+		int i = Greenfoot.getRandomNumber(10);
 		if(i == 0){
 			getWorld().addObject(new Crystal(20,20), getX(), getY());
 			getWorld().addObject(new Star(), getX(), getY()); //Bei einem Treffer wird kurz ein Stern eingeblendet
