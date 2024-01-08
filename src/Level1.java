@@ -36,11 +36,12 @@ public class Level1 extends World {
         addObject(axe, 2, 2);
         MainMenuIcon mainMenuIcon = new MainMenuIcon();
         addObject(mainMenuIcon, 0, getHeight());
+        Crystal crystal = new Crystal(99, 50);
+        addObject(crystal, 3, 3);
     }
 
     public void act() {
         updateSpawnTimer();
-        checkPlayerLocation();
     }
 
     public void moveWorld(int direction, Player unicorn) {
@@ -53,11 +54,10 @@ public class Level1 extends World {
         int playerX = player.getX();
         int playerY = player.getY();
 
-        // Überprüfe, ob der Spieler die Welt verlassen hat
         if (playerX < 0 || playerX >= getWidth() || playerY < 0 || playerY >= getHeight()) {
             showText("Du hast die Welt verlassen!", getWidth() / 2, getHeight() / 2);
-            Greenfoot.delay(50); // Warte 50 Schritte, um die Meldung anzuzeigen
-            Greenfoot.setWorld(new Level2()); // Wechsle zur neuen Welt (ersetze NewWorld durch den Namen deiner neuen Weltklasse)
+            Greenfoot.delay(50);
+            Greenfoot.setWorld(new Level2());
         }
     }
 

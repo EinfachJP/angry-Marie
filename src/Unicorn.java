@@ -10,6 +10,7 @@ public class Unicorn extends IntelligentCharacter {
 
     private int Worldx = 0;
     private int Worldy = 19;
+    private long transformStartTime;
 
     //Konstruktoren
     public Unicorn(int life, int stamina) {
@@ -33,14 +34,22 @@ public class Unicorn extends IntelligentCharacter {
         super.act();
         if (getLife() > 0) {
             performMovement();
-            //getImage().drawString(String.valueOf(life), 0, 20);
-            //draw((int) stamina);
             regenStamina();
         }
-        if (Greenfoot.isKeyDown("V")) {
-            transform();
+        transformAfterDelay();
+    }
+    private void transformAfterDelay() {
+        if (transformStartTime == 0) {
+            transformStartTime = System.currentTimeMillis();
+        }
+
+        long currentTime = System.currentTimeMillis();
+        if (currentTime - transformStartTime >= 30000) { // Überprüfe, ob 30 Sekunden vergangen sind
+            transform();// Führe die Transformation aus
+            transformStartTime = 0; // Setze den Timer zurück
         }
     }
+
 
 
     
@@ -84,43 +93,15 @@ public class Unicorn extends IntelligentCharacter {
         }
     }
 
-    public void shoot() {
-        for (int i = 0; i < inventory.length; i++) {
-            if (inventory[i] instanceof Gun) {
-                MouseInfo mouse = Greenfoot.getMouseInfo();
-
-                if (mouse != null) {
-                    int mouseX = mouse.getX();
-                    int mouseY = mouse.getY();
-
-                    Bullet bullet = new Bullet(30, 30);
-                    getWorld().addObject(bullet, getX(), getY());
-
-                    double angle = Math.toDegrees(Math.atan2(mouseY - getY(), mouseX - getX()));
-                    bullet.setRotation((int) angle);
-                    bullet.move(10);
-                    inventory[i] =null;
-                    break;
-                }
-            }
-        }
-    }
-
     public void transform() {
         int x = getX();
         int y = getY();
 
-        if (inventory != null && inventory.length > 0) {
-            for (int i = 0; i < inventory.length; i++) {
-                if (inventory[i] instanceof Crystal) {
-                    inventory[i] = null;
-                    break;
-                }
-            }
-        }
         Player newPlayer = new Player(getLife());
         newPlayer.setInventory(this.inventory);
         getWorld().addObject(newPlayer, x, y);
         getWorld().removeObject(this);
+
     }
 }
+

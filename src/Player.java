@@ -74,20 +74,24 @@ public class Player extends IntelligentCharacter {
 
 
     public void transform() {
-        for (Items items : inventory) {
-            if (items instanceof Crystal) {
+        int x = getX();
+        int y = getY();
 
-                int x = getX();
-                int y = getY();
-                Unicorn unicorn = new Unicorn(getLife());
-                unicorn.setInventory(this.inventory);
-                getWorld().addObject(unicorn, x, y);
-                getWorld().removeObject(this);
+         if(inventory != null && inventory.length > 0) {
+            for (int i = 0; i < inventory.length; i++) {
+                if (inventory[i] instanceof Crystal) {
+                    inventory[i] = null;
+                    break;
+                }
             }
         }
+        Unicorn newUnicorn = new Unicorn(getLife());
+        newUnicorn.setInventory(this.inventory);
+        getWorld().addObject(newUnicorn, x, y);
+        getWorld().removeObject(this);
     }
-
-
-
-
 }
+
+
+
+
