@@ -6,7 +6,7 @@ public class IntelligentCharacter extends Character {
     public int life;
     public InventoryVisualizer visualizer;
     public Items[] inventory = new Items[10];
-    private World Hauptmenü = new Hauptmenü();
+    private World HauptmenÃ¼ = new HauptmenÃ¼();
     public World level1 = null;
     public int damageP = 5;
     public float stamina = 40;
@@ -71,7 +71,60 @@ public class IntelligentCharacter extends Character {
         itemNumber();
         dead();
     }
+    public void performMovement() {
+        if (Greenfoot.isKeyDown("W")) {
+            turn(Direction.NORTH);
+            if (getY() > 0) {
+                move();
+            } else {
+                //getToNewWorld(0);
+            }
+        }
+        if (Greenfoot.isKeyDown("D")) {
+            turn(Direction.EAST);
+            if (getX() < 19) {
+                move();
+            } else {
+                //getToNewWorld(1);
+            }
+        }
+        if (Greenfoot.isKeyDown("S")) {
+            turn(Direction.SOUTH);
+            if (getY() < 19) {
+                move();
+            } else {
+                //getToNewWorld(2);
+            }
+        }
+        if (Greenfoot.isKeyDown("A")) {
+            turn(Direction.WEST);
+            if (getX() > 0) {
+                move();
+            } else {
+                //getToNewWorld(3);
+            }
 
+
+        }
+        if (Greenfoot.isKeyDown("Q")) {
+            eatCarrotOnYou();
+        }
+        if (Greenfoot.isKeyDown("E")) {
+            destroyRock();
+        }
+        if (Greenfoot.isKeyDown("F")) {
+            hitMonster();
+        }
+        if (Greenfoot.isKeyDown("M")) {
+            takeItemsOnYou();
+        }
+        if (Greenfoot.isKeyDown("V")) {
+            transform();
+        }
+        if (Greenfoot.isKeyDown("r")) {
+            shoot();
+        }
+    }
 
     public void itemNumber() {
         int i;
@@ -119,7 +172,7 @@ public class IntelligentCharacter extends Character {
             craftGun();
         }
         if (Greenfoot.mouseClicked(Rock.class)) {
-            moveHauptmenü();
+            moveHauptmenÃ¼();
             mm=mm+1;
         }
 
@@ -246,14 +299,14 @@ public class IntelligentCharacter extends Character {
         }
     }
 
-    public void moveHauptmenü() {
+    public void moveHauptmenÃ¼() {
         World myWorld = getWorld();
 
         if (myWorld == level1) {
             level1.removeObject(this);
-            Hauptmenü.addObject(this, 3, 4);
+            HauptmenÃ¼.addObject(this, 3, 4);
 
-            Greenfoot.setWorld(Hauptmenü);
+            Greenfoot.setWorld(HauptmenÃ¼);
 
             System.out.println(mm);
         }
