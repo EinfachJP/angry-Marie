@@ -7,8 +7,22 @@ public class StartButton extends Character {
     public void act() {
         super.act();
         if (Greenfoot.mouseClicked(this)) {
+            removeMainMenu();
             // Führe Aktion für den Start-Button aus
             Greenfoot.setWorld(new Level1());  // Wechsel zur Spielwelt
         }
     }
+
+
+    public void removeMainMenu() {
+        World myWorld = getWorld();
+        myWorld.removeObject(this);
+    }
+
+
+
+
+
+
+
 }

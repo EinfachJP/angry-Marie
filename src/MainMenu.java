@@ -11,7 +11,8 @@ public class MainMenu extends World {
         setBackground(cell2);
         setPaintOrder(Star.class, Player.class, Carrot.class, Rock.class);
 
-
+        StartButton startButton = new StartButton();
+        addObject(startButton, 8, getHeight());
 
 
 
