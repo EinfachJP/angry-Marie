@@ -28,66 +28,13 @@ public class Player extends IntelligentCharacter {
             performMovement();
             regenStamina();
         }
-    }
-
-
-
-
-    public void performMovement() {
-        if (Greenfoot.isKeyDown("W")) {
-            turn(Direction.NORTH);
-            if (getY() > 0) {
-                move();
-            } else {
-                //getToNewWorld(0);
-            }
-        }
-        if (Greenfoot.isKeyDown("D")) {
-            turn(Direction.EAST);
-            if (getX() < 19) {
-                move();
-            } else {
-                //getToNewWorld(1);
-            }
-        }
-        if (Greenfoot.isKeyDown("S")) {
-            turn(Direction.SOUTH);
-            if (getY() < 19) {
-                move();
-            } else {
-                //getToNewWorld(2);
-            }
-        }
-        if (Greenfoot.isKeyDown("A")) {
-            turn(Direction.WEST);
-            if (getX() > 0) {
-                move();
-            } else {
-                //getToNewWorld(3);
-            }
-
-
-        }
-        if (Greenfoot.isKeyDown("Q")) {
-            eatCarrotOnYou();
-        }
-        if (Greenfoot.isKeyDown("E")) {
-            destroyRock();
-            destroyTree();
-        }
-        if (Greenfoot.isKeyDown("F")) {
-            hitMonster();
-        }
-        if (Greenfoot.isKeyDown("M")) {
-            takeItemsOnYou();
-        }
         if (Greenfoot.isKeyDown("V")) {
             transform();
         }
-        if (Greenfoot.isKeyDown("r")) {
-                shoot();
-        }
     }
+
+
+
 
 
     /*public void moveWorld(World newWorld, int myNewX, int myNewY) {
@@ -125,48 +72,11 @@ public class Player extends IntelligentCharacter {
         }
     }
 
-    /*public void shoot() {
-        for (Items items : inventory) {
-            if (items instanceof Gun) {
-                    MouseInfo mouse = Greenfoot.getMouseInfo();
-                    if (mouse != null) {
-                        int mouseX = mouse.getX();
-                        int mouseY = mouse.getY();
-                        Bullet bullet = new Bullet(30, 30);
-                        getWorld().addObject(bullet, getX(), getY());
-
-                        double angle = Math.toDegrees(Math.atan2(mouseY - getY(), mouseX - getX()));
-                        bullet.setRotation((int) angle);
-                        bullet.move(2);
-                }
-            }
-        }
-    }*/
-    public void shoot() {
-        for (int i = 0; i < inventory.length; i++) {
-            if (inventory[i] instanceof Gun) {
-                MouseInfo mouse = Greenfoot.getMouseInfo();
-
-                if (mouse != null) {
-                    int mouseX = mouse.getX();
-                    int mouseY = mouse.getY();
-
-                    Bullet bullet = new Bullet(30, 30);
-                    getWorld().addObject(bullet, getX(), getY());
-
-                    double angle = Math.toDegrees(Math.atan2(mouseY - getY(), mouseX - getX()));
-                    bullet.setRotation((int) angle);
-                    bullet.move(10);
-                    inventory[i] =null;
-                    break;
-                }
-            }
-        }
-    }
 
     public void transform() {
         for (Items items : inventory) {
             if (items instanceof Crystal) {
+
                 int x = getX();
                 int y = getY();
                 Unicorn unicorn = new Unicorn(getLife());
@@ -176,4 +86,8 @@ public class Player extends IntelligentCharacter {
             }
         }
     }
+
+
+
+
 }

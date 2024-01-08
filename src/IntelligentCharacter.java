@@ -1,4 +1,5 @@
 import greenfoot.Greenfoot;
+import greenfoot.MouseInfo;
 import greenfoot.World;
 import java.util.List;
 public class IntelligentCharacter extends Character {
@@ -6,6 +7,7 @@ public class IntelligentCharacter extends Character {
     public int life;
     public InventoryVisualizer visualizer;
     public Items[] inventory = new Items[10];
+    private World Hauptmenü = new Hauptmenü();
     public World level1 = null;
     public int damageP = 5;
     public float stamina = 40;
@@ -46,6 +48,9 @@ public class IntelligentCharacter extends Character {
         System.arraycopy(playerInventory, 0, this.inventory, 0, playerInventory.length);
     }
 
+
+
+
     public void takeItemsOnYou() {
         World myWorld = getWorld();
         List<Items> items = myWorld.getObjectsAt(getX(), getY(), Items.class);
@@ -61,10 +66,64 @@ public class IntelligentCharacter extends Character {
         }
     }
 
+
     public void act() {
         draw(life);
         itemNumber();
         dead();
+    }
+    public void performMovement() {
+        if (Greenfoot.isKeyDown("W")) {
+            turn(Direction.NORTH);
+            if (getY() > 0) {
+                move();
+            } else {
+                //getToNewWorld(0);
+            }
+        }
+        if (Greenfoot.isKeyDown("D")) {
+            turn(Direction.EAST);
+            if (getX() < 19) {
+                move();
+            } else {
+                //getToNewWorld(1);
+            }
+        }
+        if (Greenfoot.isKeyDown("S")) {
+            turn(Direction.SOUTH);
+            if (getY() < 19) {
+                move();
+            } else {
+                //getToNewWorld(2);
+            }
+        }
+        if (Greenfoot.isKeyDown("A")) {
+            turn(Direction.WEST);
+            if (getX() > 0) {
+                move();
+            } else {
+                //getToNewWorld(3);
+            }
+
+
+        }
+        if (Greenfoot.isKeyDown("Q")) {
+            eatCarrotOnYou();
+        }
+        if (Greenfoot.isKeyDown("E")) {
+            destroyRock();
+            destroyTree();
+        }
+        if (Greenfoot.isKeyDown("F")) {
+            hitMonster();
+        }
+        if (Greenfoot.isKeyDown("M")) {
+            takeItemsOnYou();
+        }
+
+        if (Greenfoot.isKeyDown("r")) {
+            shoot();
+        }
     }
 
     public void itemNumber() {
@@ -112,7 +171,32 @@ public class IntelligentCharacter extends Character {
         if(Greenfoot.isKeyDown("c")){
             craftGun();
         }
+        if (Greenfoot.mouseClicked(Rock.class)) {
+            moveHauptmenü();
+            mm=mm+1;
+        }
+
     }
+
+    public void shoot() {
+        for (Items items : inventory) {
+            if (items instanceof Gun) {
+                MouseInfo mouse = Greenfoot.getMouseInfo();
+
+                if (mouse != null) {
+                    int mouseX = mouse.getX();
+                    int mouseY = mouse.getY();
+                    Bullet bullet = new Bullet(30, 30);
+                    getWorld().addObject(bullet, getX(), getY());
+
+                    double angle = Math.toDegrees(Math.atan2(mouseY - getY(), mouseX - getX()));
+                    bullet.setRotation((int) angle);
+                    bullet.move(10);
+                }
+            }
+        }
+    }
+    int mm = 0;
     public void craftGun(){
         World myWorld = getWorld();
         List<Stone> stones = myWorld.getObjectsAt(getX(), getY(), Stone.class);
@@ -233,4 +317,19 @@ public class IntelligentCharacter extends Character {
             setLife(0);
         }
     }
+
+    public void moveHauptmenü() {
+        World myWorld = getWorld();
+
+        if (myWorld == level1) {
+            level1.removeObject(this);
+            Hauptmenü.addObject(this, 3, 4);
+
+            Greenfoot.setWorld(Hauptmenü);
+
+            System.out.println(mm);
+        }
+    }
+
+
 }
