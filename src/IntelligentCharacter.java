@@ -124,6 +124,7 @@ public class IntelligentCharacter extends Character {
         if (Greenfoot.isKeyDown("r")) {
             shoot();
         }
+
     }
 
     public void itemNumber() {
@@ -171,10 +172,7 @@ public class IntelligentCharacter extends Character {
         if(Greenfoot.isKeyDown("c")){
             craftGun();
         }
-        if (Greenfoot.mouseClicked(Rock.class)) {
-            moveMainMenu();
-            mm=mm+1;
-        }
+
 
     }
 
@@ -196,7 +194,7 @@ public class IntelligentCharacter extends Character {
             }
         }
     }
-    int mm = 0;
+
     public void craftGun(){
         World myWorld = getWorld();
         List<Stone> stones = myWorld.getObjectsAt(getX(), getY(), Stone.class);
@@ -318,18 +316,7 @@ public class IntelligentCharacter extends Character {
         }
     }
 
-    public void moveMainMenu() {
-        World myWorld = getWorld();
 
-        if (myWorld == level1) {
-            level1.removeObject(this);
-            MainMenu.addObject(this, 3, 4);
-
-            Greenfoot.setWorld(MainMenu);
-
-            System.out.println(mm);
-        }
-    }
 
 
 }
