@@ -1,10 +1,10 @@
 import greenfoot.GreenfootImage;
 import greenfoot.World;
 
-public class Hauptmenü extends World {
+public class MainMenu extends World {
 
 
-    public Hauptmenü() {
+    public MainMenu() {
         super(20, 21, 40);
         GreenfootImage cell2 = new GreenfootImage("cell.lightgreenGrass.jpg");
         cell2.scale(20, 20);
