@@ -36,8 +36,6 @@ public class Level1 extends World {
         addObject(axe, 2, 2);
         MainMenuIcon mainMenuIcon = new MainMenuIcon();
         addObject(mainMenuIcon, 0, getHeight());
-        Crystal crystal = new Crystal(99, 50);
-        addObject(crystal, 3, 3);
     }
 
     public void act() {

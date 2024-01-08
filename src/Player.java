@@ -80,15 +80,15 @@ public class Player extends IntelligentCharacter {
          if(inventory != null && inventory.length > 0) {
             for (int i = 0; i < inventory.length; i++) {
                 if (inventory[i] instanceof Crystal) {
+                    Unicorn newUnicorn = new Unicorn(getLife());
                     inventory[i] = null;
+                    newUnicorn.setInventory(this.inventory);
+                    getWorld().addObject(newUnicorn, x, y);
+                    getWorld().removeObject(this);
                     break;
                 }
             }
         }
-        Unicorn newUnicorn = new Unicorn(getLife());
-        newUnicorn.setInventory(this.inventory);
-        getWorld().addObject(newUnicorn, x, y);
-        getWorld().removeObject(this);
     }
 }
 

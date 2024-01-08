@@ -177,19 +177,23 @@ public class IntelligentCharacter extends Character {
     }
 
     public void shoot() {
-        for (Items items : inventory) {
-            if (items instanceof Gun) {
-                MouseInfo mouse = Greenfoot.getMouseInfo();
+        if(inventory != null && inventory.length > 0) {
+            for (int i = 0; i < inventory.length; i++) {
+                if (inventory[i] instanceof Gun) {
+                    MouseInfo mouse = Greenfoot.getMouseInfo();
 
-                if (mouse != null) {
-                    int mouseX = mouse.getX();
-                    int mouseY = mouse.getY();
-                    Bullet bullet = new Bullet(30, 30);
-                    getWorld().addObject(bullet, getX(), getY());
+                    if (mouse != null) {
+                        int mouseX = mouse.getX();
+                        int mouseY = mouse.getY();
+                        Bullet bullet = new Bullet(30, 30);
+                        getWorld().addObject(bullet, getX(), getY());
 
-                    double angle = Math.toDegrees(Math.atan2(mouseY - getY(), mouseX - getX()));
-                    bullet.setRotation((int) angle);
-                    bullet.move(10);
+                        double angle = Math.toDegrees(Math.atan2(mouseY - getY(), mouseX - getX()));
+                        bullet.setRotation((int) angle);
+                        bullet.move(2);
+                        inventory[i] = null;
+                        break;
+                    }
                 }
             }
         }
