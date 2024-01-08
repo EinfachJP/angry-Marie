@@ -15,21 +15,14 @@ public class MainMenuIcon extends BlockingObject{
     public void act(){
         openMenu();
     }
-    int mm = 0;
     public void openMenu(){
         if (Greenfoot.mouseClicked(this)) {
             moveMainMenu();
-            mm=mm+1;
         }
     }
     public void moveMainMenu() {
         World mainMenu = new MainMenu();
-        World myWorld = getWorld();
-            myWorld.removeObject(this);
-            mainMenu.addObject(this, 3, 4);
-
             Greenfoot.setWorld(mainMenu);
-            System.out.println(mm);
 
     }
 
