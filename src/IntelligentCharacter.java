@@ -1,4 +1,5 @@
 import greenfoot.Greenfoot;
+import greenfoot.MouseInfo;
 import greenfoot.World;
 import java.util.List;
 public class IntelligentCharacter extends Character {
@@ -119,9 +120,7 @@ public class IntelligentCharacter extends Character {
         if (Greenfoot.isKeyDown("M")) {
             takeItemsOnYou();
         }
-        if (Greenfoot.isKeyDown("V")) {
-            transform();
-        }
+
         if (Greenfoot.isKeyDown("r")) {
             shoot();
         }
@@ -177,6 +176,25 @@ public class IntelligentCharacter extends Character {
             mm=mm+1;
         }
 
+    }
+
+    public void shoot() {
+        for (Items items : inventory) {
+            if (items instanceof Gun) {
+                MouseInfo mouse = Greenfoot.getMouseInfo();
+
+                if (mouse != null) {
+                    int mouseX = mouse.getX();
+                    int mouseY = mouse.getY();
+                    Bullet bullet = new Bullet(30, 30);
+                    getWorld().addObject(bullet, getX(), getY());
+
+                    double angle = Math.toDegrees(Math.atan2(mouseY - getY(), mouseX - getX()));
+                    bullet.setRotation((int) angle);
+                    bullet.move(10);
+                }
+            }
+        }
     }
     int mm = 0;
     public void craftGun(){

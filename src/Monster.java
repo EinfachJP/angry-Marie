@@ -97,5 +97,6 @@ public class Monster extends Character {
     }
     public void score(int scorePoints){
         setScore(getScore()+scorePoints);
+        getImage().drawString(String.valueOf(getScore()), 0, 20);
     }
 }

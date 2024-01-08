@@ -28,6 +28,9 @@ public class Player extends IntelligentCharacter {
             performMovement();
             regenStamina();
         }
+        if (Greenfoot.isKeyDown("V")) {
+            transform();
+        }
     }
 
 
@@ -69,24 +72,7 @@ public class Player extends IntelligentCharacter {
         }
     }
 
-    public void shoot() {
-        for (Items items : inventory) {
-            if (items instanceof Gun) {
-                MouseInfo mouse = Greenfoot.getMouseInfo();
 
-                if (mouse != null) {
-                    int mouseX = mouse.getX();
-                    int mouseY = mouse.getY();
-                    Bullet bullet = new Bullet(30, 30);
-                    getWorld().addObject(bullet, getX(), getY());
-
-                    double angle = Math.toDegrees(Math.atan2(mouseY - getY(), mouseX - getX()));
-                    bullet.setRotation((int) angle);
-                    bullet.move(10);
-                }
-            }
-        }
-    }
     public void transform() {
         for (Items items : inventory) {
             if (items instanceof Crystal) {

@@ -36,7 +36,9 @@ public class Unicorn extends IntelligentCharacter {
             //getImage().drawString(String.valueOf(life), 0, 20);
             //draw((int) stamina);
             regenStamina();
-
+        }
+        if (Greenfoot.isKeyDown("V")) {
+            transform();
         }
     }
 
