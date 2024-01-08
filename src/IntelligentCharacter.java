@@ -111,6 +111,7 @@ public class IntelligentCharacter extends Character {
         }
         if (Greenfoot.isKeyDown("E")) {
             destroyRock();
+            destroyTree();
         }
         if (Greenfoot.isKeyDown("F")) {
             hitMonster();
